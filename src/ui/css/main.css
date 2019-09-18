@@ -154,7 +154,7 @@
 }
 
 .label{
-    -fx-text-fill:  #f44336;/*vermelho*/
+    -fx-text-fill:  black;/*vermelho*/
 	-fx-font-size: 15px;
     -fx-font-weight: bold;
 }
