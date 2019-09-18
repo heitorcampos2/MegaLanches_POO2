@@ -15,6 +15,6 @@
          </font>
       </Label>
       <Button layoutX="240.0" layoutY="332.0" mnemonicParsing="false" text="Adicionar" />
-      <TextField layoutX="142.0" layoutY="141.0" prefHeight="21.0" prefWidth="271.0" promptText="Nome do Produto" />
+      <TextField layoutX="158.0" layoutY="141.0" prefHeight="21.0" prefWidth="271.0" promptText="Nome do Produto" />
    </children>
 </AnchorPane>
