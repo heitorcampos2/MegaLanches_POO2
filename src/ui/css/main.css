@@ -1,0 +1,251 @@
+
+* {
+    -fx-primary: #3333333;/*preto*/
+    -fx-primary-light: #3333333;/*preto*/
+    -fx-primary-dark: #000311;/*preto*/
+    -fx-primary-text: #f44336;
+    -fx-secondary: #f44336;/*vermelho*/
+    -fx-secondary-light: #f44336;/*vermelho*/
+    -fx-secondary-dark: white;/*vermelho*/
+    -fx-secondary-text: #b2b2b2;/*cinza*/   
+}
+
+.root{
+    -fx-background-color: black;
+    
+}
+
+/**
+* Configurações gerais de componentes 
+*/
+
+
+.text-field
+{
+    -fx-prompt-text-fill: #f44336; 
+    -fx-text-fill: #f44336; 
+    -jfx-focus-color: #f44336;
+    -fx-background-color: #f44336 , black , black;
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 2 -1;
+}
+
+.text-area
+{
+    -fx-prompt-text-fill: -fx-secondary; /*vermelho*/
+    -fx-text-fill: -fx-secondary; /*vermelho*/
+    -jfx-focus-color: -fx-secondary-dark;
+    
+}
+
+.jfx-text-field{
+    -jfx-unfocus-color: -fx-primary-light;
+}
+
+.separator .line {
+    -fx-border-color: #f44336;/*vermelho*/
+}
+
+/*.jfx-button{
+    -jfx-button-type: RAISED;
+    -fx-background-color: #f44336;/*vermelho*/
+/*}*/
+
+/* 
+ * Metro style Push Button
+ * Author: Pedro Duque Vieira
+ * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
+ */
+.button {
+    -fx-padding: 5 22 5 22;   
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #f44336;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 12pt;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button:hover {
+    -fx-background-color: black;
+}
+
+.button:pressed, .button:default:hover:pressed {
+  -fx-background-color: black;
+  -fx-text-fill: #f44336;/**/
+  -fx-font-weight: bold;
+}
+
+.button:focused {
+    -fx-border-color: white, white;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+.button:disabled, .button:default:disabled {
+    -fx-opacity: 0.4;
+    -fx-background-color: #f44336;
+    -fx-text-fill: white;
+}
+
+.button:default {
+    -fx-background-color: -fx-focus-color;
+    -fx-text-fill: #f44336;
+}
+
+.button:default:hover {
+    -fx-background-color: derive(-fx-focus-color,30%);
+}
+/**/
+/*TAB-PANE - 01*/
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;
+}
+
+.tab-pane
+{
+    -fx-tab-min-width:99px;
+}
+
+.tab{
+    -fx-background-insets: 0 1 0 1,0,0;
+}
+.tab-pane .tab
+{
+    -fx-background-color: black;
+
+}
+
+.tab-pane .tab:selected
+{
+    -fx-background-color: black;
+}
+
+.tab .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill:  #f44336;/*vermelho*/
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill:  #f44336;/*vermelho*/
+}
+/*tab-pane termina aqui*/
+.jfx-date-picker{
+    -jfx-default-color: -fx-secondary-dark;
+}
+
+.menu-bar {
+    -fx-background-color: -fx-primary-dark;
+}
+
+.context-menu {
+    -fx-background-color: -fx-primary-dark;
+}
+
+.label{
+    -fx-text-fill:  #f44336;/*vermelho*/
+}
+
+/**
+* Configurações para a tabela 
+*/
+.table-view {
+    -fx-background-color: -fx-primary-light;
+}
+
+.table-view .column-header,.table-view .filler {
+    -fx-background-color: -fx-primary-dark;
+}
+
+.table-view .column-header .label{
+    -fx-text-fill: -fx-secondary;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-primary-light;
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-primary;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: -fx-secondary;
+}
+
+.table-view .scroll-bar:horizontal,
+.table-view .scroll-bar:vertical  {
+    -fx-background-color:-fx-primary-dark;
+
+}
+
+/**
+* COnfigurações para scroll 
+*/
+.scroll-bar:horizontal .increment-button,
+.scroll-bar:horizontal .decrement-button,
+.scroll-bar:vertical .increment-button ,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color :transparent;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color :-fx-primary;
+}
+
+/**
+* COnfigurações para o combo box 
+*/
+.combo-box{
+   -jfx-focus-color: -fx-secondary-dark;
+}
+
+.combo-box .list-cell 
+{
+    -fx-text-fill: -fx-secondary;
+}
+
+.combo-box-popup .list-view 
+{
+    -fx-background-color: -fx-primary;;
+}    
+
+.combo-box-popup .list-view .list-cell 
+{
+    -fx-background-color: -fx-primary;;
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected:hover 
+{
+    -fx-background-color: -fx-selection-bar;
+}
+
+.combo-box-popup .list-view .list-cell:filled:hover 
+{
+    -fx-background-color: -fx-selection-bar;
+}
+
+.dialog-pane {
+    -fx-background-color: black;
+}
+
+.dialog-pane .label {
+    -fx-text-fill: white;
+}
+
+.dialog-pane:header .header-panel {
+    -fx-background-color: black;
+}
+
+.dialog-pane:header .header-panel .label {
+    -fx-font-style: italic;
+    -fx-font-size: 2em;
+}
