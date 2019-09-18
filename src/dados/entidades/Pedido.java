@@ -6,8 +6,9 @@
 package dados.entidades;
 
 //import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -15,9 +16,9 @@ import java.util.ArrayList;
  */
 public class Pedido {
     private Integer id_pedido;
-    private LocalDate data_pedido;
+    private LocalDateTime data_pedido;
     private Cliente cliente;
-    private ArrayList<Produto> produtos;
+    private List<Produto> produtos;
 
     
 }
