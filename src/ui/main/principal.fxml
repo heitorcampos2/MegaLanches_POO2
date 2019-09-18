@@ -6,6 +6,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -13,7 +14,7 @@
    <bottom>
       <Label text="Mega Lanches - 2019" BorderPane.alignment="CENTER">
          <font>
-            <Font name="System Italic" size="12.0" />
+            <Font name="System Italic" size="13.0" />
          </font>
       </Label>
    </bottom>
@@ -25,7 +26,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="58.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="58.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../imagens/cliente.png" />
                      </image>
@@ -37,14 +38,14 @@
                   <Font name="System Bold" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="74.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="74.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../imagens/produtos.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#fazPedidos" prefHeight="120.0" prefWidth="120.0" text="Pedidos">
+            <Button alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#fazPedidos" prefHeight="116.0" prefWidth="127.0" text="Pedidos">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -63,10 +64,14 @@
       </VBox>
    </right>
    <top>
-      <ImageView fitHeight="78.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../imagens/Logo_TV_2015.png" />
-         </image>
-      </ImageView>
+      <HBox alignment="TOP_CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="89.0" fitWidth="279.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagens/MEGA-Lanches.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
    </top>
 </BorderPane>
