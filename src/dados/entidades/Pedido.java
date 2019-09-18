@@ -5,6 +5,7 @@
  */
 package dados.entidades;
 
+//import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -17,6 +18,6 @@ public class Pedido {
     private LocalDate data_pedido;
     private Cliente cliente;
     private ArrayList<Produto> produtos;
-    
+
     
 }

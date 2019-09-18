@@ -5,6 +5,8 @@
  */
 package dados.entidades;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author david
@@ -12,7 +14,7 @@ package dados.entidades;
 public class Produto {
     private Integer id_produto;
     private String nome_p;
-    private Double preco_un;
+    private BigDecimal preco_un;
     private String ingredientes;
 
     public Integer getId_produto() {
@@ -31,11 +33,11 @@ public class Produto {
         this.nome_p = nome_p;
     }
 
-    public Double getPreco_un() {
+    public BigDecimal getPreco_un() {
         return preco_un;
     }
 
-    public void setPreco_un(Double preco_un) {
+    public void setPreco_un(BigDecimal preco_un) {
         this.preco_un = preco_un;
     }
 
