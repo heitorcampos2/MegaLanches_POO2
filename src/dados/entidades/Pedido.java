@@ -7,8 +7,6 @@ package dados.entidades;
 
 //import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -18,7 +16,29 @@ public class Pedido {
     private Integer id_pedido;
     private LocalDateTime data_pedido;
     private Cliente cliente;
-    private List<Produto> produtos;
 
-    
+    public Integer getId_pedido() {
+        return id_pedido;
+    }
+
+    public void setId_pedido(Integer id_pedido) {
+        this.id_pedido = id_pedido;
+    }
+
+    public LocalDateTime getData_pedido() {
+        return data_pedido;
+    }
+
+    public void setData_pedido(LocalDateTime data_pedido) {
+        this.data_pedido = data_pedido;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+     
 }
