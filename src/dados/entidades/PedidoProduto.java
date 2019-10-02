@@ -5,12 +5,17 @@
  */
 package dados.entidades;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author david
  */
 public class PedidoProduto {
+    
+    private Integer idPedidoProduto;
     private Produto produto;
+    private BigDecimal preco;
     private Pedido pedido;
     private Integer qtd;
 
