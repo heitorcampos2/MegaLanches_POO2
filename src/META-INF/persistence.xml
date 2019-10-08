@@ -1,0 +1,43 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+    version="2.0">
+
+    <!-- unidade de persistencia com o nome projeto -->
+    <persistence-unit name="lanchonete">
+
+        <!-- Implementação do JPA, no nosso caso Hibernate -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Aqui devem ser listadas todas as entidades criadas -->
+         <class>dados.entidades.Produto</class>
+         <class>dados.entidades.Cliente</class>
+         <class>dados.entidades.Pedido</class>
+         <class>dados.entidades.PedidoProduto</class>
+
+        <properties>    
+            <!-- Driver de Acesso ao BD -->
+            <property name="javax.persistence.jdbc.driver" 
+                value="com.mysql.jdbc.Driver" />
+
+            <!-- Endereço de acesso ao BD -->
+            <property name="javax.persistence.jdbc.url" 
+                value="jdbc:mysql://localhost/lanchonete" />
+
+            <!-- Usuario de acesso ao BD -->
+            <property name="javax.persistence.jdbc.user" value="root" />
+            
+            <!-- Senha acesso ao BD -->
+            <property name="javax.persistence.jdbc.password" value="" />
+
+            <!-- Configurações específicas do Hibernate -->
+            <property name="hibernate.dialect" 
+                value="org.hibernate.dialect.MySQL5InnoDBDialect" /> 
+            <property name="hibernate.hbm2ddl.auto" value="update" /> 
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            
+        </properties>
+    </persistence-unit>
+</persistence>

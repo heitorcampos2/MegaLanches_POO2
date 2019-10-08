@@ -7,16 +7,28 @@ package dados.entidades;
 
 //import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author david
  */
+@Entity
 public class Pedido {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_pedido;
     private LocalDateTime data_pedido;
+    
+    @OneToMany
     private Cliente cliente;
-
+    
+    
     public Integer getId_pedido() {
         return id_pedido;
     }
@@ -40,5 +52,32 @@ public class Pedido {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.id_pedido);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pedido other = (Pedido) obj;
+        if (!Objects.equals(this.id_pedido, other.id_pedido)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
      
 }
