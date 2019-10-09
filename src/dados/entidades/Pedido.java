@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -25,7 +26,7 @@ public class Pedido {
     private Integer id_pedido;
     private LocalDateTime data_pedido;
     
-    @OneToMany
+    @ManyToOne(optional=false)
     private Cliente cliente;
     
     

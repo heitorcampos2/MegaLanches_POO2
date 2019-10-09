@@ -29,8 +29,9 @@ public class PedidoProduto {
     private Produto produto;
     private BigDecimal preco;
     
-    @OneToMany
+    @ManyToOne(optional=false)
     private Pedido pedido;
+    
     private Integer qtd;
 
     public Integer getIdPedidoProduto() {
