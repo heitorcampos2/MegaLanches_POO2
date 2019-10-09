@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,32 +15,20 @@
             <Font name="System Italic" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="37.0" layoutY="155.0" text="Identificação: ">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="37.0" layoutY="190.0" text="Endereço: ">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="26.0" layoutY="291.0" text="Telefone: ">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <TextField layoutX="171.0" layoutY="153.0" promptText="nome" />
-      <TextField layoutX="171.0" layoutY="188.0" promptText="Rua" />
-      <TextField layoutX="369.0" layoutY="188.0" promptText="Bairro" />
-      <TextField layoutX="171.0" layoutY="228.0" promptText="Numero" />
-      <TextField layoutX="369.0" layoutY="228.0" promptText="Complemento" />
-      <TextField layoutX="171.0" layoutY="289.0" promptText="Telefone" />
-      <TextField layoutX="369.0" layoutY="153.0" promptText="CPF" />
       <ImageView fitHeight="114.0" fitWidth="150.0" layoutX="220.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../imagens/images.jpg" />
+            <Image url="@../imagens/pedido.jpg" />
          </image>
       </ImageView>
+      <JFXTextField fx:id="TextFieldID" editable="false" labelFloat="true" layoutX="122.0" layoutY="131.0" promptText="ID" />
+      <JFXTextField fx:id="TextFieldNome" labelFloat="true" layoutX="122.0" layoutY="175.0" promptText="Nome" />
+      <JFXTextField fx:id="TextFieldCPF" labelFloat="true" layoutX="122.0" layoutY="214.0" promptText="CPF" />
+      <JFXTextField fx:id="TextFieldTelefone" labelFloat="true" layoutX="122.0" layoutY="254.0" promptText="Telefone" />
+      <JFXTextField fx:id="TextFieldRua" labelFloat="true" layoutX="334.0" layoutY="131.0" prefHeight="25.0" prefWidth="135.0" promptText="Rua" />
+      <JFXTextField fx:id="TextFieldBairro" labelFloat="true" layoutX="334.0" layoutY="175.0" prefHeight="25.0" prefWidth="135.0" promptText="Bairro" />
+      <JFXTextField fx:id="TextFieldNumero" labelFloat="true" layoutX="334.0" layoutY="214.0" promptText="Nº" />
+      <JFXTextField fx:id="TextFieldComplemento" labelFloat="true" layoutX="334.0" layoutY="254.0" promptText="Complemento (opcional)" />
+      <JFXButton fx:id="ButtonAdicionar" layoutX="179.0" layoutY="318.0" onAction="#AdicionarCliente" text="Adicionar" />
+      <JFXButton fx:id="ButtonGerenciar" layoutX="320.0" layoutY="318.0" onAction="#Gerenciar" text="Gerenciar" />
    </children>
 </AnchorPane>

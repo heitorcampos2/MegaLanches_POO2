@@ -5,8 +5,12 @@
  */
 package ui.cadastroCliente;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -16,6 +20,27 @@ import javafx.fxml.Initializable;
  */
 public class CadastroClienteController implements Initializable {
 
+    @FXML
+    private JFXTextField TextFieldID;
+    @FXML
+    private JFXTextField TextFieldNome;
+    @FXML
+    private JFXTextField TextFieldCPF;
+    @FXML
+    private JFXTextField TextFieldTelefone;
+    @FXML
+    private JFXTextField TextFieldRua;
+    @FXML
+    private JFXTextField TextFieldBairro;
+    @FXML
+    private JFXTextField TextFieldNumero;
+    @FXML
+    private JFXTextField TextFieldComplemento;
+    @FXML
+    private JFXButton ButtonAdicionar;
+    @FXML
+    private JFXButton ButtonGerenciar;
+
     /**
      * Initializes the controller class.
      */
@@ -23,5 +48,13 @@ public class CadastroClienteController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void AdicionarCliente(ActionEvent event) {
+    }
+
+    @FXML
+    private void Gerenciar(ActionEvent event) {
+    }
     
 }
