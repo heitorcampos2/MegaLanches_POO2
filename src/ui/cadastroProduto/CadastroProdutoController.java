@@ -5,8 +5,12 @@
  */
 package ui.cadastroProduto;
 
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -16,6 +20,15 @@ import javafx.fxml.Initializable;
  */
 public class CadastroProdutoController implements Initializable {
 
+    @FXML
+    private JFXTextField TextFieldNomeProduto;
+    @FXML
+    private JFXTextField TextFieldPrecoProduto;
+    @FXML
+    private JFXTextArea TextAreaIngredientes;
+    @FXML
+    private JFXTextField TextFieldID;
+
     /**
      * Initializes the controller class.
      */
@@ -23,5 +36,13 @@ public class CadastroProdutoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void ButtonAdicionar(ActionEvent event) {
+    }
+
+    @FXML
+    private void Buttongerenciar(ActionEvent event) {
+    }
     
 }

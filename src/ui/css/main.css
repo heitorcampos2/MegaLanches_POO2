@@ -69,6 +69,11 @@
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
+.jfx-text-field
+{
+    -jfx-focus-color: red;
+}
+
 .button:hover {
     -fx-background-color: red;
 	-fx-border-color: black;
@@ -255,4 +260,4 @@
 .dialog-pane:header .header-panel .label {
     -fx-font-style: italic;
     -fx-font-size: 2em;
-}
+}}
