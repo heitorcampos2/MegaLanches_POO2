@@ -4,8 +4,8 @@
     -fx-primary-light: #3333333;/*preto*/
     -fx-primary-dark: #000311;/*preto*/
     -fx-primary-text: #f44336;
-    -fx-secondary: #f44336;/*vermelho*/
-    -fx-secondary-light: #f44336;/*vermelho*/
+    -fx-secondary: red;/*vermelho*/
+    -fx-secondary-light: red;/*vermelho*/
     -fx-secondary-dark: white;/*vermelho*/
     -fx-secondary-text: #b2b2b2;/*cinza*/   
 }
@@ -21,28 +21,28 @@
 
 
 .text-field
-{
+{/*
     -fx-prompt-text-fill: grey; 
     -fx-text-fill: #f44336; 
     -jfx-focus-color: #f44336;
     -fx-background-color: black , white , white;
     -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 2 -1;
-}
+}*/
 
 .text-area
 {
-    -fx-prompt-text-fill: -fx-secondary; /*vermelho*/
-    -fx-text-fill: -fx-secondary; /*vermelho*/
-    -jfx-focus-color: -fx-secondary-dark;
+   /* -fx-prompt-text-fill: -fx-secondary; /*vermelho*/
+    /*-fx-text-fill: -fx-secondary; /*vermelho*/
+    /*-jfx-focus-color: -fx-secondary-dark;*/
     
 }
 
 .jfx-text-field{
-    -jfx-unfocus-color: -fx-primary-light;
+   /* -jfx-unfocus-color: -fx-primary-light;*/
 }
 
 .separator .line {
-    -fx-border-color: #f44336;/*vermelho*/
+    -fx-border-color: red;/*vermelho*/
 }
 
 /*.jfx-button{
@@ -56,14 +56,15 @@
  * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
  */
 .button {
+
     -fx-padding: 5 22 5 22;   
-    -fx-border-color: black;
+    -fx-border-color: red;
     -fx-border-width: 2;
     -fx-background-radius: 0;
-    -fx-background-color: #f44336;
+    -fx-background-color: black;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 12pt;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
@@ -75,8 +76,8 @@
 }
 
 .button:pressed, .button:default:hover:pressed {
-  -fx-background-color: white;
-  -fx-text-fill: #f44336;/**/
+  -fx-background-color: grey;
+  -fx-text-fill: red;/**/
   -fx-font-weight: bold;
   -fx-border-width: 2;
   -fx-border-color: black;
@@ -92,13 +93,13 @@
 
 .button:disabled, .button:default:disabled {
     -fx-opacity: 0.4;
-    -fx-background-color: #f44336;
+    -fx-background-color: red;
     -fx-text-fill: white;
 }
 
 .button:default {
     -fx-background-color: -fx-focus-color;
-    -fx-text-fill: #f44336;
+    -fx-text-fill: red;
 }
 
 .button:default:hover {
