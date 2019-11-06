@@ -23,6 +23,25 @@ public class Cliente {
     private String complemento; 
    private String bairro;
     private String numero;
+    
+    
+    
+    //construtor vazio da JPA obrigatorio
+    public Cliente(){}
+    
+    //criando consyrutores desejados
+    public Cliente (String n,String CPF, String t, String r, String c,String b,
+            String Num){
+        
+       this.setNome(n);
+       this.setCpf(CPF);
+       this.setTelefone(t);
+       this.setRua(r);
+       this.setComplemento(c);
+       this.setBairro(b);
+       this.setNumero(Num);
+    
+    }
 
     public Integer getId_cliente() {
         return id_cliente;

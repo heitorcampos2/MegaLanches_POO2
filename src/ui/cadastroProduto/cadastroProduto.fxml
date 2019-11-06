@@ -4,23 +4,34 @@
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.cadastroProduto.CadastroProdutoController">
    <children>
-      <ImageView fitHeight="119.0" fitWidth="113.0" layoutX="245.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="58.0" fitWidth="95.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagens/images.jpg" />
          </image>
       </ImageView>
-      <JFXTextField fx:id="TextFieldNomeProduto" focusColor="RED" labelFloat="true" layoutX="79.0" layoutY="173.0" prefHeight="25.0" prefWidth="445.0" promptText="Nome do Produto:" />
-      <JFXTextField fx:id="TextFieldPrecoProduto" focusColor="RED" labelFloat="true" layoutX="78.0" layoutY="222.0" prefHeight="25.0" prefWidth="175.0" promptText="Preço do produto:" />
-      <JFXTextArea fx:id="TextAreaIngredientes" focusColor="RED" labelFloat="true" layoutX="78.0" layoutY="268.0" prefHeight="45.0" prefWidth="445.0" promptText="Ingredientes:" />
-      <JFXTextField fx:id="TextFieldID" focusColor="RED" labelFloat="true" layoutX="79.0" layoutY="121.0" prefHeight="25.0" prefWidth="62.0" promptText="ID" />
-      <JFXButton layoutX="172.0" layoutY="329.0" onAction="#ButtonAdicionar" text="Adicionar" />
-      <JFXButton layoutX="311.0" layoutY="329.0" onAction="#Buttongerenciar" text="Gerenciar" />
+      <JFXTextField fx:id="TextFieldNomeProduto" focusColor="RED" labelFloat="true" layoutX="194.0" layoutY="31.0" prefHeight="25.0" prefWidth="200.0" promptText="Nome do Produto" />
+      <JFXTextField fx:id="TextFieldPrecoProduto" focusColor="RED" labelFloat="true" layoutX="419.0" layoutY="31.0" prefHeight="25.0" prefWidth="86.0" promptText="Preço do produto" />
+      <JFXTextArea fx:id="TextAreaIngredientes" focusColor="RED" labelFloat="true" layoutX="21.0" layoutY="83.0" prefHeight="51.0" prefWidth="392.0" promptText="Ingredientes:" />
+      <JFXTextField fx:id="TextFieldID" focusColor="RED" labelFloat="true" layoutX="110.0" layoutY="31.0" prefHeight="25.0" prefWidth="62.0" promptText="ID" />
+      <JFXButton layoutX="432.0" layoutY="67.0" onAction="#adicionar" prefHeight="33.0" prefWidth="127.0" text="Adicionar" />
+      <JFXButton layoutX="431.0" layoutY="109.0" onAction="#editar" prefHeight="33.0" prefWidth="127.0" text="Editar" />
       <Label layoutX="226.0" layoutY="372.0" text="Mega Lanches - 2019" />
+      <TableView fx:id="tabela" layoutX="8.0" layoutY="191.0" prefHeight="181.0" prefWidth="573.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="57.0" text="ID" />
+          <TableColumn fx:id="colProduto" prefWidth="123.0" text="Produto" />
+            <TableColumn fx:id="colValor" prefWidth="55.0" text="Valor" />
+            <TableColumn fx:id="colIngredientes" prefWidth="337.0" text="Ingredientes" />
+        </columns>
+      </TableView>
+      <JFXButton layoutX="432.0" layoutY="151.0" onAction="#excluir" prefHeight="33.0" prefWidth="127.0" text="Excluir" />
    </children>
 </AnchorPane>

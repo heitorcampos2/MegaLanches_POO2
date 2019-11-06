@@ -25,7 +25,16 @@ public class Produto {
     private String nome_p;
     private BigDecimal preco_un;
     private String ingredientes;
+    
+    public Produto(){};
 
+    public Produto(String n, BigDecimal p, String i){
+        
+        this.setNome_p(n);
+        this.setPreco_un(p);
+        this.setIngredientes(i);   
+    
+    }
     public Integer getId_produto() {
         return id_produto;
     }

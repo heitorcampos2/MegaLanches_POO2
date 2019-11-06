@@ -7,11 +7,14 @@ package ui.cadastroCliente;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import dados.entidades.Cliente;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import servicos.ClienteServico;
 
 /**
  * FXML Controller class
@@ -40,6 +43,8 @@ public class CadastroClienteController implements Initializable {
     private JFXButton ButtonAdicionar;
     @FXML
     private JFXButton ButtonGerenciar;
+    //atributo para representar o servico
+    private ClienteServico servico = new ClienteServico();
 
     /**
      * Initializes the controller class.
@@ -51,6 +56,39 @@ public class CadastroClienteController implements Initializable {
 
     @FXML
     private void AdicionarCliente(ActionEvent event) {
+        
+        //pegando os dados do formulario
+        Cliente a = new Cliente (TextFieldNome.getText(),TextFieldCPF.getText(),
+                  TextFieldTelefone.getText(),TextFieldRua.getText(),
+                  TextFieldComplemento.getText(),TextFieldBairro.getText(),
+                  TextFieldNumero.getText());
+        
+        //mandar o ator para a camada de servicos
+        
+        servico.Adicionar(a);
+        
+        //Exibindo mensagem
+        mensagem("Cliente salvo com sucesso!");
+        //Limpando o form
+        
+       TextFieldNome.setText("");
+       TextFieldCPF.setText("");
+                  TextFieldTelefone.setText("");
+                  TextFieldRua.setText("");
+                  TextFieldComplemento.setText("");
+                  TextFieldBairro.setText("");
+                  TextFieldNumero.setText("");
+    }
+    
+    public void mensagem(String m ){
+        
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("Sucesso!"); //título
+        alerta.setHeaderText(null); //cabeçalho (opcional)
+        alerta.setContentText(m);// conteudo
+        alerta.showAndWait(); //mostrando o alerta
+    
+    
     }
 
     @FXML
