@@ -45,6 +45,8 @@ public class CadastroClienteController implements Initializable {
     private JFXButton ButtonGerenciar;
     //atributo para representar o servico
     private ClienteServico servico = new ClienteServico();
+    @FXML
+    private JFXButton ButtonGerenciar1;
 
     /**
      * Initializes the controller class.
@@ -54,7 +56,6 @@ public class CadastroClienteController implements Initializable {
         // TODO
     }    
 
-    @FXML
     private void AdicionarCliente(ActionEvent event) {
         
         //pegando os dados do formulario
@@ -92,7 +93,15 @@ public class CadastroClienteController implements Initializable {
     }
 
     @FXML
-    private void Gerenciar(ActionEvent event) {
+    private void Adicionar(ActionEvent event) {
+    }
+
+    @FXML
+    private void Editar(ActionEvent event) {
+    }
+
+    @FXML
+    private void Excluir(ActionEvent event) {
     }
     
 }
