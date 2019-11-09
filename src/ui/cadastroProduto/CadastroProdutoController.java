@@ -11,6 +11,7 @@ import dados.entidades.Produto;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +19,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -75,7 +77,14 @@ public class CadastroProdutoController implements Initializable {
 
     @FXML
     private void adicionar(ActionEvent event) {
-         //pegando os dados do formulario
+        
+        //verificar se está vazio
+        if(TextFieldID.getText().isEmpty()){//inserindo
+            //Pega os dados do fomulário
+        //e cria um objeto ator
+         
+
+        //pegando os dados do formulario
         Produto a = new Produto (TextFieldNomeProduto.getText(),
                   new BigDecimal (TextFieldPrecoProduto.getText()),TextAreaIngredientes.getText());
         
@@ -94,6 +103,36 @@ public class CadastroProdutoController implements Initializable {
        TextFieldNomeProduto.setText("");
        TextFieldPrecoProduto.setText("");
        TextAreaIngredientes.setText("");
+        }else{
+            //atualizando o Produto
+            
+           //pegando a resposta da confirmação do usuario
+           
+           Optional<ButtonType> btn = 
+                   mensagemDeConfirmacao("Deseja mesmo salvar as alterações?", "EDITAR");
+           //se o botã OK foi pressionado
+           if(btn.get()== ButtonType.OK){
+           //pegar os novos dados do frmulario e atualizar o meu produto
+           selecionado.setNome_p(TextFieldNomeProduto.getText());
+           selecionado.setPreco_un( new BigDecimal(TextFieldPrecoProduto.getText()));
+           selecionado.setIngredientes(TextAreaIngredientes.getText());
+   
+           //mandando para a camada de servico salvar as alterações
+          servico.editar(selecionado);
+           //exibir mensagem
+          
+          mensagem("Produto atualizado com sucesso.");
+            //chama o metodo para atualizar a tabela
+        listarProdutosNaTabela();
+        
+        //Limpando o form
+        TextFieldID.setText("");
+       TextFieldNomeProduto.setText("");
+       TextFieldPrecoProduto.setText("");
+       TextAreaIngredientes.setText("");
+        
+        }
+    }
     }
  public void mensagem(String m ){
         
@@ -104,6 +143,25 @@ public class CadastroProdutoController implements Initializable {
         alerta.showAndWait(); //mostrando o alerta
     
     
+    }
+ 
+ //exibe uma mensagem de erro
+    public void mensagemErro(String m){
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle("SUCESSO!"); 
+        alerta.setHeaderText(null); 
+        alerta.setContentText(m);
+        alerta.showAndWait(); 
+    }
+    
+    //exibe uma mensagem de confirmação
+    private Optional<ButtonType> mensagemDeConfirmacao(String mensagem, String titulo){
+        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+        alerta.setTitle(titulo); 
+        alerta.setHeaderText(null); 
+        alerta.setContentText(mensagem);
+        
+        return alerta.showAndWait();
     }
  
  //fazendo configuração das colunas da tabela
@@ -141,6 +199,25 @@ public class CadastroProdutoController implements Initializable {
  
     @FXML
     private void editar(ActionEvent event) {
+        
+        //pegar o produto que foi selecionado na tabela
+         selecionado = tabela.getSelectionModel().getSelectedItem();
+         
+         //se tem algum produto selecionado
+         
+         if(selecionado != null){//se tem produto selecionado
+         //pegar os dados do produto e jogar nos campos do formulario
+          TextFieldID.setText(String.valueOf(selecionado.getId_produto()));
+          TextFieldNomeProduto.setText(String.valueOf(selecionado.getNome_p()));
+        // erro--->>>   TextFieldPrecoProduto.setText(new BigDecimal(selecionado.getPreco_un()));
+      
+       TextAreaIngredientes.setText(selecionado.getIngredientes());
+         
+         }else{
+             mensagemErro("Selecione um ator.");
+         
+         }
+        
     }
 
     @FXML

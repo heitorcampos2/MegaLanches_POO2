@@ -43,4 +43,33 @@ public class ProdutoDAO {
          return consulta.getResultList();
     
     }
+     // salvar alteração no BD
+    public void editar(Produto a){
+       //Pegando o gerenciador de acesso ao BD
+        EntityManager gerenciador = JPAUtil.getGerenciador();  
+        //Iniciar a transação
+        gerenciador.getTransaction().begin();
+        
+        //mandar sincronizar as alterações
+        gerenciador.merge(a);
+         //Commit
+        gerenciador.getTransaction().commit();
+    
+    }
+        public void excluir(Produto a){
+            //Pegando o gerenciador de acesso ao BD
+        EntityManager gerenciador = JPAUtil.getGerenciador();  
+        //Iniciar a transação
+        gerenciador.getTransaction().begin();
+        
+        //mandar sincronizar as alterações
+        a = gerenciador.merge(a);
+        
+        //mandar sincronizar as alteracoes
+        gerenciador.remove(a);
+         //Commit
+        gerenciador.getTransaction().commit();
+        
+        
+        }
 }

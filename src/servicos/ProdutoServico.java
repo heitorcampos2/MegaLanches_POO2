@@ -31,4 +31,20 @@ public class ProdutoServico {
         return dao.listar();
     
     }
+    
+    public void editar(Produto a){
+        //qualquer regra de negocio(se aplicavel)
+        
+        dao.editar(a);
+    
+    
+    }
+    
+    public void excluir(Produto a){
+        //qualquer regra de negocio(se aplicavel)
+        //mandar para a DAO excluir
+        dao.excluir(a);
+    
+    
+    }
 }
