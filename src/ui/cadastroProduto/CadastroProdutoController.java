@@ -56,7 +56,7 @@ public class CadastroProdutoController implements Initializable {
     //atributo que representa os dados para a tabela
     private ObservableList<Produto> dados = 
             FXCollections.observableArrayList();
-    //criando um atributo que vai armazenar o ator que foi selecionado na tabela
+    //criando um atributo que vai armazenar o Produto que foi selecionado na tabela
     private Produto selecionado;
 
     /**
@@ -68,7 +68,7 @@ public class CadastroProdutoController implements Initializable {
       
         //configurar tabela
         configurarTabela();
-        //carregar a lista de atores na tabela
+        //carregar a lista de Produtos na tabela
         listarProdutosNaTabela();
     
     }    
@@ -81,7 +81,7 @@ public class CadastroProdutoController implements Initializable {
         //verificar se está vazio
         if(TextFieldID.getText().isEmpty()){//inserindo
             //Pega os dados do fomulário
-        //e cria um objeto ator
+        //e cria um objeto Produto
          
 
         //pegando os dados do formulario
@@ -92,13 +92,14 @@ public class CadastroProdutoController implements Initializable {
         
         servico.adicionar(a);
         
-        //Exibindo mensagem
-        mensagem("Produto salvo com sucesso!");
         
         //chama o metodo para atualizar a tabela
         listarProdutosNaTabela();
         
-        //Limpando o form
+        //Exibindo mensagem
+        mensagem("Produto salvo com sucesso!");
+        
+        //Limpando o formulario
         
        TextFieldNomeProduto.setText("");
        TextFieldPrecoProduto.setText("");
@@ -110,7 +111,7 @@ public class CadastroProdutoController implements Initializable {
            
            Optional<ButtonType> btn = 
                    mensagemDeConfirmacao("Deseja mesmo salvar as alterações?", "EDITAR");
-           //se o botã OK foi pressionado
+           //se o botão OK foi pressionado
            if(btn.get()== ButtonType.OK){
            //pegar os novos dados do frmulario e atualizar o meu produto
            selecionado.setNome_p(TextFieldNomeProduto.getText());
@@ -119,13 +120,15 @@ public class CadastroProdutoController implements Initializable {
    
            //mandando para a camada de servico salvar as alterações
           servico.editar(selecionado);
-           //exibir mensagem
           
-          mensagem("Produto atualizado com sucesso.");
+          
             //chama o metodo para atualizar a tabela
         listarProdutosNaTabela();
         
-        //Limpando o form
+        //exibir mensagem
+          mensagem("Produto atualizado com sucesso.");
+        
+        //Limpando o formulario
         TextFieldID.setText("");
        TextFieldNomeProduto.setText("");
        TextFieldPrecoProduto.setText("");
@@ -179,16 +182,16 @@ public class CadastroProdutoController implements Initializable {
         
     }//configurarTabela
         
-    //responsavel por carregar a lista de atores na tabela
+    //responsavel por carregar a lista de Produtos na tabela
         private void listarProdutosNaTabela(){
         
         //limpar quaisquer dados anteriores
         
         dados.clear();
-        //solicitando a camada de servoços a lista de atores
+        //solicitando a camada de servoços a lista de Produtos
         List<Produto> Produto = servico.listar();
         
-        //transformar a lista de atores no formato que a tabela
+        //transformar a lista de Produtos no formato que a tabela
         //do javaFX aceita
         dados = FXCollections.observableArrayList(Produto);
         //jogando os dados na tabela
@@ -214,7 +217,7 @@ public class CadastroProdutoController implements Initializable {
        TextAreaIngredientes.setText(selecionado.getIngredientes());
          
          }else{
-             mensagemErro("Selecione um ator.");
+             mensagemErro("Selecione um Produto.");
          
          }
         
@@ -222,6 +225,30 @@ public class CadastroProdutoController implements Initializable {
 
     @FXML
     private void excluir(ActionEvent event) {
-    }
+        
+         // pegar o Produto que foi selecionado na tabela
+        selecionado = tabela.getSelectionModel().getSelectedItem();
+        
+        if(selecionado!= null){//existe produto selecionado
+            
+            //pegando resposta de confirmação do usuario
+            Optional<ButtonType> btn = 
+                     mensagemDeConfirmacao("Deseja mesmo excluir o Produto?", "EXCLUIR");
+           //se o botão OK foi pressionado
+           if(btn.get()== ButtonType.OK){
+               //mandar para a camada de servico excluir
+           servico.excluir(selecionado);
+           
+        //chama o metodo para atualizar a tabela
+        listarProdutosNaTabela();
+        
+         //Exibindo mensagem
+        mensagem("Produto excluido com sucesso!");
     
+           }else{
+             mensagemErro("Selecione um Produto.");
+         
+         }
+        }
+    }
 }
