@@ -31,8 +31,7 @@ import servicos.ClienteServico;
 public class CadastroClienteController implements Initializable {
 
     @FXML
-    private JFXTextField TextFieldID;
-    private Cliente selecionado;
+    private JFXTextField TextFieldID;   
     @FXML
     private JFXTextField TextFieldNome;
     @FXML
@@ -73,7 +72,7 @@ public class CadastroClienteController implements Initializable {
     private ObservableList<Cliente> dados = 
             FXCollections.observableArrayList();
     //criando um atributo que vai armazenar o Cliente que foi selecionado na tabela
-    
+     private Cliente selecionado;
     
     /**
      * Initializes the controller class.
@@ -116,6 +115,7 @@ public class CadastroClienteController implements Initializable {
        TextFieldID.setText("");
        TextFieldNome.setText("");
        TextFieldCPF.setText("");
+       TextFieldTelefone.setText("");
        TextFieldRua.setText("");
        TextFieldBairro.setText("");
        TextFieldNumero.setText("");
