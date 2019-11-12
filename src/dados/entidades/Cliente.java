@@ -43,6 +43,10 @@ public class Cliente {
     
     }
 
+    public Cliente(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public Integer getId_cliente() {
         return id_cliente;
     }

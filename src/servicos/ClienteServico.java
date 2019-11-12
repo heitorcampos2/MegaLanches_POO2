@@ -7,6 +7,7 @@ package servicos;
 
 import dados.daos.ClienteDAO;
 import dados.entidades.Cliente;
+import java.util.List;
 
 /**
  *
@@ -16,14 +17,34 @@ public class ClienteServico {
      //atributo para representar a camada de dados
     private ClienteDAO dao = new ClienteDAO();
     
-    public void Adicionar(Cliente a){
+    public void adicionar(Cliente a){
         //fazer qualquer regra de negocio
         
         //mandar o ator para a camada de dados
         //para ser salvo no banco de dados
-        dao.Adicionar(a);
+        dao.adicionar(a);
         
+    }
+    public List<Cliente> listar(){
+        //qualquer regra de negocio (se aplicavel)
+        //pedir a dao para listar e retornar
+        return dao.listar();
     
     }
     
+    public void editar(Cliente a){
+        //qualquer regra de negocio(se aplicavel)
+        
+        dao.editar(a);
+    
+    
+    }
+    
+    public void excluir(Cliente a){
+        //qualquer regra de negocio(se aplicavel)
+        //mandar para a DAO excluir
+        dao.excluir(a);
+    
+    
+    }
 }
