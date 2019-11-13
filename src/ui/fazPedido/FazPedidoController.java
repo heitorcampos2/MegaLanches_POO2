@@ -17,7 +17,7 @@ import javafx.scene.control.ToggleGroup;
 /**
  * FXML Controller class
  *
- * @author david
+ * @author HeiThor
  */
 public class FazPedidoController implements Initializable {
 
