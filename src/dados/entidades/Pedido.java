@@ -28,7 +28,12 @@ public class Pedido {
     
     @ManyToOne(optional=false)
     private Cliente cliente;
+    public Pedido(LocalDateTime data,Cliente cliente){
+        this.setData_pedido(data);
+        this.setCliente(cliente);    
+    }
     
+    public Pedido(){}
     
     public Integer getId_pedido() {
         return id_pedido;

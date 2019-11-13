@@ -32,6 +32,15 @@ public class PedidoProduto {
     private Pedido pedido;
     
     private Integer qtd;
+    
+    public  PedidoProduto (){}
+    
+    public  PedidoProduto (Produto produto,BigDecimal preco, Pedido pedido,Integer qtd ){
+        this.setProduto(produto);
+        this.setPreco(preco);
+        this.setPedido(pedido);
+        this.setQtd(qtd);    
+    }
 
     public Integer getIdPedidoProduto() {
         return idPedidoProduto;
