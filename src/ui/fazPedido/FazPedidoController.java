@@ -21,18 +21,6 @@ import javafx.scene.control.ToggleGroup;
  */
 public class FazPedidoController implements Initializable {
 
-    @FXML
-    private ToggleGroup select;
-    @FXML
-    private JFXTextField textFieldBuscar;
-    @FXML
-    private JFXButton buttonFazPedido;
-    @FXML
-    private JFXButton ButtonPesquisar;
-    @FXML
-    private JFXButton ButtonPesquisar1;
-    @FXML
-    private JFXTextField textFieldBuscar1;
 
     /**
      * Initializes the controller class.
@@ -42,12 +30,5 @@ public class FazPedidoController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void FazerPedido(ActionEvent event) {
-    }
-
-    @FXML
-    private void pesquisar(ActionEvent event) {
-    }
     
 }
