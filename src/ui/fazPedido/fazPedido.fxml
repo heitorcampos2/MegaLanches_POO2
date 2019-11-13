@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
@@ -13,40 +14,52 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="ui.fazPedido.FazPedidoController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.fazPedido.FazPedidoController">
    <children>
-      <JFXTextField labelFloat="true" layoutX="32.0" layoutY="103.0" prefHeight="25.0" prefWidth="239.0" promptText="Buscar lache" stylesheets="@../css/main.css" />
-      <JFXRadioButton layoutX="172.0" layoutY="292.0" text="A vista">
+      <JFXTextField fx:id="textFieldBuscar" labelFloat="true" layoutX="125.0" layoutY="14.0" prefHeight="25.0" prefWidth="239.0" promptText="Pesquisar Produto" stylesheets="@../css/main.css" />
+      <JFXRadioButton layoutX="34.0" layoutY="343.0" text="A vista">
          <toggleGroup>
             <ToggleGroup fx:id="select" />
          </toggleGroup>
       </JFXRadioButton>
-      <JFXRadioButton layoutX="253.0" layoutY="292.0" text="Cartão" toggleGroup="$select" />
-      <Label layoutX="34.0" layoutY="292.0" text="Forma de pagamento:" />
-      <TableView layoutX="34.0" layoutY="165.0" prefHeight="113.0" prefWidth="449.0">
+      <JFXRadioButton layoutX="106.0" layoutY="343.0" text="Cartão" toggleGroup="$select" />
+      <TableView layoutX="33.0" layoutY="210.0" prefHeight="113.0" prefWidth="503.0">
         <columns>
-          <TableColumn prefWidth="163.0" text="Lanche(s)" />
-          <TableColumn prefWidth="73.0" text="Quantidade" />
-            <TableColumn prefWidth="119.0" text="Ingredientes" />
-            <TableColumn prefWidth="64.0" text="Preço" />
+          <TableColumn prefWidth="259.0" text="Produto" />
+          <TableColumn prefWidth="125.0" text="Quantidade" />
+            <TableColumn prefWidth="117.0" text="Preço" />
         </columns>
       </TableView>
-      <JFXButton layoutX="145.0" layoutY="329.0" stylesheets="@../css/main.css" text="Fazer Pedido" />
-      <JFXButton layoutX="314.0" layoutY="329.0" stylesheets="@../css/main.css" text="Limpar" />
+      <JFXButton fx:id="buttonFazPedido" layoutX="182.0" layoutY="334.0" onAction="#FazerPedido" prefHeight="33.0" prefWidth="117.0" stylesheets="@../css/main.css" text="Finalizar" />
+      <JFXButton layoutX="315.0" layoutY="334.0" prefHeight="33.0" prefWidth="93.0" stylesheets="@../css/main.css" text="Editar" />
       <Label layoutX="217.0" layoutY="369.0" text="Mega Lanches - 2019">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <JFXButton layoutX="284.0" layoutY="99.0" prefHeight="33.0" prefWidth="101.0" stylesheets="@../css/main.css" text="Buscar" />
-      <Spinner layoutX="499.0" layoutY="177.0" prefHeight="25.0" prefWidth="70.0" />
-      <Label layoutX="502.0" layoutY="153.0" text="Quantidade:" />
-      <ImageView fitHeight="74.0" fitWidth="145.0" layoutX="260.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+      <JFXButton fx:id="ButtonPesquisar" layoutX="395.0" layoutY="18.0" onAction="#pesquisar" prefHeight="33.0" prefWidth="125.0" stylesheets="@../css/main.css" text="Pesquisar" />
+      <Spinner layoutX="523.0" layoutY="31.0" prefHeight="25.0" prefWidth="70.0" />
+      <Label layoutX="523.0" layoutY="10.0" text="Quantidade:" />
+      <ImageView fitHeight="74.0" fitWidth="145.0" layoutX="25.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagens/pedido.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="34.0" layoutY="145.0" text="Cardápio:" />
+      <Label layoutX="34.0" layoutY="172.0" text="ID do Pedido:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <JFXComboBox layoutX="125.0" layoutY="42.0" prefHeight="25.0" prefWidth="239.0" promptText="Produtos" />
+      <JFXButton fx:id="ButtonPesquisar1" layoutX="395.0" layoutY="80.0" onAction="#pesquisar" prefHeight="33.0" prefWidth="125.0" stylesheets="@../css/main.css" text="Buscar" />
+      <JFXTextField fx:id="textFieldBuscar1" labelFloat="true" layoutX="125.0" layoutY="75.0" prefHeight="25.0" prefWidth="239.0" promptText="Pesquisar Cliente" stylesheets="@../css/main.css" />
+      <JFXComboBox layoutX="125.0" layoutY="111.0" prefHeight="25.0" prefWidth="239.0" promptText="Clientes" />
+      <Label layoutX="250.0" layoutY="172.0" text="ID do Cliente:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <JFXTextField layoutX="122.0" layoutY="158.0" prefHeight="25.0" prefWidth="117.0" />
+      <JFXTextField layoutX="330.0" layoutY="160.0" prefHeight="25.0" prefWidth="117.0" />
+      <JFXTextField layoutX="447.0" layoutY="338.0" text="TOTAL" />
    </children>
 </AnchorPane>

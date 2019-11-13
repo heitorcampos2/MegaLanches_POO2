@@ -212,7 +212,7 @@ public class CadastroProdutoController implements Initializable {
          //pegar os dados do produto e jogar nos campos do formulario
           TextFieldID.setText(String.valueOf(selecionado.getId_produto()));
           TextFieldNomeProduto.setText(String.valueOf(selecionado.getNome_p()));
-        // erro--->>>   TextFieldPrecoProduto.setText(new BigDecimal(selecionado.getPreco_un()));
+          TextFieldPrecoProduto.setText(selecionado.getPreco_un().toString());
       
        TextAreaIngredientes.setText(selecionado.getIngredientes());
          

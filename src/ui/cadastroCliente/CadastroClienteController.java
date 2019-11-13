@@ -98,7 +98,10 @@ public class CadastroClienteController implements Initializable {
          
 
         //pegando os dados do formulario
-        Cliente a = new Cliente (TextFieldNome.getText());
+        Cliente a = new Cliente (TextFieldNome.getText(),
+        TextFieldCPF.getText(), TextFieldTelefone.getText(),
+       TextFieldRua.getText(), TextFieldComplemento.getText(),TextFieldBairro.getText(),
+       TextFieldNumero.getText() );
         
         //mandar o Cliente para a camada de servicos
         
@@ -108,8 +111,9 @@ public class CadastroClienteController implements Initializable {
         //chama o metodo para atualizar a tabela
         listarClientesNaTabela();
         
-        //Exibindo mensagem
+       //Exibindo mensagem
         mensagem("Cliente salvo com sucesso!");
+        
         //Limpando o formulario
         
        TextFieldID.setText("");
@@ -121,6 +125,7 @@ public class CadastroClienteController implements Initializable {
        TextFieldNumero.setText("");
        TextFieldComplemento.setText("");
        
+        
         }else{
             //atualizando o Cliente
             
