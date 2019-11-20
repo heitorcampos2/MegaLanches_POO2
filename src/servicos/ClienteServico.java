@@ -17,13 +17,13 @@ public class ClienteServico {
      //atributo para representar a camada de dados
     private ClienteDAO dao = new ClienteDAO();
     
-    public void adicionar(Cliente a){
+    public Cliente adicionar(Cliente a){
         //fazer qualquer regra de negocio
         
         //mandar o ator para a camada de dados
         //para ser salvo no banco de dados
         dao.adicionar(a);
-        
+        return a;
     }
     public List<Cliente> listar(){
         //qualquer regra de negocio (se aplicavel)

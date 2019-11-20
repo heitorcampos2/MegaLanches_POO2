@@ -17,7 +17,7 @@ import util.JPAUtil;
  */
 public class ClienteDAO {
     //salvar o ator no BD
-    public void adicionar(Cliente a){
+    public Cliente adicionar(Cliente a){
          //Pegando o gerenciador de acesso ao BD
         EntityManager gerenciador = JPAUtil.getGerenciador();
          //Iniciar a transação
@@ -28,6 +28,7 @@ public class ClienteDAO {
         //Commit na transação
         gerenciador.getTransaction().commit();
         
+        return a;
     }
     
      public List<Cliente> listar(){

@@ -11,12 +11,15 @@ import dados.entidades.Cliente;
 import dados.entidades.Produto;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.SelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -45,7 +48,11 @@ public class FazPedidoController implements Initializable {
     //private ClienteServico ProdutoServico = new ProdutoServico();
     private ObservableList<Cliente> dados = FXCollections.observableArrayList();
     //criando um atributo que vai armazenar o Cliente que foi selecionado na tabela
-     private Cliente selecionado;
+    
+     private Produto ProdutoSelecionado;
+    @FXML
+    
+     private Cliente clienteSelecionado;
     @FXML
     private TableColumn colId;
     @FXML
@@ -73,6 +80,14 @@ public class FazPedidoController implements Initializable {
     private Tab TabProduto;
     @FXML
     private Tab tabResumo;
+    @FXML
+    private TableColumn<?, ?> colProdutoSelecionado;
+    @FXML
+    private TableColumn<?, ?> colPrecoSelecionado;
+    @FXML
+    private TableColumn<?, ?> colQtdSelecionado;
+    @FXML
+    private JFXTextField TextFieldeClienteResumo;
     /**
      * Initializes the controller class.
      */
@@ -86,7 +101,38 @@ public class FazPedidoController implements Initializable {
         listarClientesNaTabela();
         listarProdutosNaTabela();        
     
-    }    
+    } 
+    //#########mensagens#####
+    
+    //mensagem sucesso
+    public void mensagemSucesso(String m ){
+        
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle("Sucesso!"); //título
+        alerta.setHeaderText(null); //cabeçalho (opcional)
+        alerta.setContentText(m);// conteudo
+        alerta.showAndWait(); //mostrando o alerta
+    }
+ 
+ //exibe uma mensagem de erro
+    public void mensagemErro(String m){
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle("SUCESSO!"); 
+        alerta.setHeaderText(null); 
+        alerta.setContentText(m);
+        alerta.showAndWait(); 
+    }
+    
+    //exibe uma mensagem de confirmação
+    private Optional<ButtonType> mensagemDeConfirmacao(String mensagem, String titulo){
+        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+        alerta.setTitle(titulo); 
+        alerta.setHeaderText(null); 
+        alerta.setContentText(mensagem);
+        
+        return alerta.showAndWait();
+    }
+    //#####ConfigurarTabela
     private void configurarTabela(){
         //dixer onde a coluna vai pegar o valor para
         //exibir, basta dizer o nome do metodo get que 
@@ -177,11 +223,41 @@ public class FazPedidoController implements Initializable {
 
     @FXML
     private void SelecionarCliente(ActionEvent event) {
+       
         
-        SelectionModel<Tab> sm = tabPaneFazPedido.getSelectionModel();
+         // pegar o Cliente que foi selecionado na tabela
+        clienteSelecionado = tabela.getSelectionModel().getSelectedItem();
+        
+         if(clienteSelecionado!= null){//existe cliente selecionado
+            
+           
+               SelectionModel<Tab> sm = tabPaneFazPedido.getSelectionModel();
         sm.select(TabProduto);
+          
+    
+           }else{
+             mensagemErro("Selecione um Cliente.");
+         
+         }
+           
+        TextFieldeClienteResumo.setText( clienteSelecionado.getNome());
         
-        
+    }
+
+    @FXML
+    private void AvancarResumo(ActionEvent event) {
+        ProdutoSelecionado = tabelaDisponiveis.getSelectionModel().getSelectedItem();
+        if(ProdutoSelecionado!= null){//existe cliente selecionado
+            
+           
+               SelectionModel<Tab> sm = tabPaneFazPedido.getSelectionModel();
+        sm.select(tabResumo);
+          
+    
+           }else{
+             mensagemErro("Selecione um Produto.");
+         
+         }
     }
 }
         
