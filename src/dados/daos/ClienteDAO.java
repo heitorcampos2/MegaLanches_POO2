@@ -43,6 +43,25 @@ public class ClienteDAO {
          return consulta.getResultList();
     
     }
+     
+     public List<Cliente> listarPeloNomeCliente(String nome){
+        //Pegando o gerenciador de acesso ao BD
+        EntityManager gerenciador = JPAUtil.getGerenciador();
+        
+        //criando a consulta no BD
+        
+        TypedQuery <Cliente> consulta = gerenciador.createQuery
+        ("Select f from Cliente as f where f.nome like :nome order by f.nome", Cliente.class);
+        
+        
+         //substituir o parametro :nome pelo valor da variavel n
+         consulta.setParameter("nome", nome + "%");
+         
+         
+         //retorn a lista de atores
+         return consulta.getResultList();
+    
+    }
      // salvar alteração no BD
     public void editar(Cliente a){
        //Pegando o gerenciador de acesso ao BD

@@ -31,6 +31,12 @@ public class ClienteServico {
         return dao.listar();
     
     }
+    public List<Cliente> listarPeloNomeCliente(String nome){
+        //qualquer regra de negocio (se aplicavel)
+        //pedir a dao para listar e retornar
+        return dao.listarPeloNomeCliente(nome);
+    
+    }
     
     public void editar(Cliente a){
         //qualquer regra de negocio(se aplicavel)
