@@ -49,14 +49,14 @@ public class ProdutoDAO {
         //Pegando o gerenciador de acesso ao BD
         EntityManager gerenciador = JPAUtil.getGerenciador();
         
-        //criando a consulta no BD
+         //criando a consulta no BD
         
         TypedQuery <Produto> consulta = gerenciador.createQuery
-        ("Select f from Cliente as f where f.nome like :nome order by f.nome", Produto.class);
+        ("Select f from Produto as f where f.nome_p like :nome_p order by f.nome_p", Produto.class);
         
         
          //substituir o parametro :nome pelo valor da variavel n
-         consulta.setParameter("nome", nome + "%");
+         consulta.setParameter("nome_p", nome + "%");
          
          
          //retorn a lista de produtos

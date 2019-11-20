@@ -17,6 +17,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.SelectionModel;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
@@ -62,6 +65,14 @@ public class FazPedidoController implements Initializable {
     private TableColumn colPreco;
     @FXML
     private TableView tabelaSelecionados;
+    @FXML
+    private TabPane tabPaneFazPedido;
+    @FXML
+    private Tab tabCliente;
+    @FXML
+    private Tab TabProduto;
+    @FXML
+    private Tab tabResumo;
     /**
      * Initializes the controller class.
      */
@@ -162,6 +173,15 @@ public class FazPedidoController implements Initializable {
         //jogando os dados na tabela
         
         tabela.setItems(dados);
+    }
+
+    @FXML
+    private void SelecionarCliente(ActionEvent event) {
+        
+        SelectionModel<Tab> sm = tabPaneFazPedido.getSelectionModel();
+        sm.select(TabProduto);
+        
+        
     }
 }
         
