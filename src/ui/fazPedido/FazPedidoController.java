@@ -8,6 +8,7 @@ package ui.fazPedido;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import dados.entidades.Cliente;
+import dados.entidades.Produto;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -22,6 +23,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import servicos.ClienteServico;
 import servicos.FazPedidoServico;
+import servicos.ProdutoServico;
 
 /**
  * FXML Controller class
@@ -37,15 +39,29 @@ public class FazPedidoController implements Initializable {
  //Atributo para representar o servico
     private FazPedidoServico servico = new FazPedidoServico();
     private ClienteServico ClienteServico = new ClienteServico();
-    //private ProdutoServico ProdutoServico = new ProdutoServico();
-    private ObservableList<Cliente> dados = 
-            FXCollections.observableArrayList();
+    //private ClienteServico ProdutoServico = new ProdutoServico();
+    private ObservableList<Cliente> dados = FXCollections.observableArrayList();
     //criando um atributo que vai armazenar o Cliente que foi selecionado na tabela
      private Cliente selecionado;
     @FXML
-    private TableColumn<?, ?> colId;
+    private TableColumn colId;
     @FXML
-    private TableColumn<?, ?> colNome;
+    private TableColumn colNome;
+    @FXML
+    private JFXTextField textFieldPesquisarProduto;
+    @FXML
+    private TableView<Produto> tabelaDisponiveis;
+    //Atributo para representar o servico
+    private ProdutoServico ProdutoServico = new ProdutoServico();
+    //private ProdutoServico ProdutoServico = new ProdutoServico();
+    private ObservableList<Produto> dados_p = FXCollections.observableArrayList();
+    //criando um atributo que vai armazenar o Cliente que foi selecionado na tabela
+    @FXML
+    private TableColumn colProduto;
+    @FXML
+    private TableColumn colPreco;
+    @FXML
+    private TableView tabelaSelecionados;
     /**
      * Initializes the controller class.
      */
@@ -57,6 +73,7 @@ public class FazPedidoController implements Initializable {
         configurarTabela();
         //carregar a lista de Clientes na tabela
         listarClientesNaTabela();
+        listarProdutosNaTabela();        
     
     }    
     private void configurarTabela(){
@@ -68,6 +85,9 @@ public class FazPedidoController implements Initializable {
         
         colId.setCellValueFactory(new PropertyValueFactory("id_cliente"));
         colNome.setCellValueFactory(new PropertyValueFactory("nome"));
+        
+        colProduto.setCellValueFactory(new PropertyValueFactory("nome_p"));//*
+        colPreco.setCellValueFactory(new PropertyValueFactory("preco_un"));
         
     }//configurarTabela
     
@@ -87,10 +107,48 @@ public class FazPedidoController implements Initializable {
         tabela.setItems(dados);
  
         }
+     
+      private void listarProdutosNaTabela() {
+        //limpar quaisquer dados anteriores
+        
+        dados_p.clear();
+        //pegar nome da pessoa q deseja pesquisar
+        String nome = textFieldPesquisarProduto.getText();
+        
+        //solicitando a camada de serviços a lista de Produto
+        List<Produto> Produto = ProdutoServico.listarProdutosNaTabela();
+        
+        //transformar a lista de Produtos no formato que a tabela
+        //do javaFX aceita
+        dados_p  = FXCollections.observableArrayList(Produto);
+        //jogando os dados na tabela
+        
+        tabelaDisponiveis.setItems(dados_p);
+    }
+
+    @FXML
+    private void PesquisarProduto(ActionEvent event) {
+        
+        //limpar quaisquer dados anteriores        
+        dados_p.clear();
+        //pegar nome da pessoa q deseja pesquisar
+        String nome = textFieldPesquisarProduto.getText();
+        
+        //solicitando a camada de serviços a lista de Clientes
+        List<Produto> Produto = ProdutoServico.listarPeloNomeProduto(nome);
+        
+        //transformar a lista de Clientes no formato que a tabela
+        //do javaFX aceita
+        dados_p  = FXCollections.observableArrayList(Produto);
+        //jogando os dados na tabela
+        
+        tabelaDisponiveis.setItems(dados_p);
+    }
+
     @FXML
     private void PesquisarCliente(ActionEvent event) {
-           //limpar quaisquer dados anteriores
         
+        //limpar quaisquer dados anteriores        
         dados.clear();
         //pegar nome da pessoa q deseja pesquisar
         String nome = textFieldPesquisar.getText();
@@ -105,6 +163,10 @@ public class FazPedidoController implements Initializable {
         
         tabela.setItems(dados);
     }
+}
+        
+        
+    
 
     
-}
+

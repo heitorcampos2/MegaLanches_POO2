@@ -5,6 +5,7 @@
  */
 package dados.daos;
 
+import dados.entidades.Cliente;
 import dados.entidades.Produto;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -30,7 +31,7 @@ public class ProdutoDAO {
         
     }
     
-     public List<Produto> listar(){
+     public List<Produto> listarProdutosNaTabela(){
         //Pegando o gerenciador de acesso ao BD
         EntityManager gerenciador = JPAUtil.getGerenciador();
         
@@ -43,6 +44,26 @@ public class ProdutoDAO {
          return consulta.getResultList();
     
     }
+     
+     public List<Produto> listarPeloNomeProduto(String nome){
+        //Pegando o gerenciador de acesso ao BD
+        EntityManager gerenciador = JPAUtil.getGerenciador();
+        
+        //criando a consulta no BD
+        
+        TypedQuery <Produto> consulta = gerenciador.createQuery
+        ("Select f from Cliente as f where f.nome like :nome order by f.nome", Produto.class);
+        
+        
+         //substituir o parametro :nome pelo valor da variavel n
+         consulta.setParameter("nome", nome + "%");
+         
+         
+         //retorn a lista de produtos
+         return consulta.getResultList();
+    
+    }
+     
      // salvar alteração no BD
     public void editar(Produto a){
        //Pegando o gerenciador de acesso ao BD

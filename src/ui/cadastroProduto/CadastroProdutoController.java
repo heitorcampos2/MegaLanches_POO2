@@ -189,7 +189,7 @@ public class CadastroProdutoController implements Initializable {
         
         dados.clear();
         //solicitando a camada de servoços a lista de Produtos
-        List<Produto> Produto = servico.listar();
+        List<Produto> Produto = servico.listarProdutosNaTabela();
         
         //transformar a lista de Produtos no formato que a tabela
         //do javaFX aceita

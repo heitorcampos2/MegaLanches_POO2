@@ -28,14 +28,14 @@
       <JFXButton layoutX="524.0" layoutY="149.0" onAction="#excluir" prefHeight="33.0" prefWidth="121.0" text="Excluir" />
       <TableView fx:id="tabela" layoutX="14.0" layoutY="198.0" prefHeight="266.0" prefWidth="676.0">
         <columns>
-          <TableColumn fx:id="colId" prefWidth="40.0" text="ID" />
-          <TableColumn fx:id="colNome" prefWidth="110.0" text="Nome" />
-            <TableColumn fx:id="colCpf" prefWidth="78.0" text="CPF" />
-            <TableColumn fx:id="ColRua" prefWidth="75.0" text="Rua" />
-            <TableColumn fx:id="ColNumero" prefWidth="61.0" text="N°" />
-            <TableColumn fx:id="colBairro" prefWidth="62.0" text="Bairro" />
-            <TableColumn fx:id="colComplemento" prefWidth="114.0" text="complemento" />
-            <TableColumn fx:id="colTelefone" prefWidth="86.0" text="Tel." />
+          <TableColumn fx:id="colId" prefWidth="31.0" text="ID" />
+          <TableColumn fx:id="colNome" prefWidth="136.0" text="Nome" />
+            <TableColumn fx:id="colCpf" prefWidth="82.0" text="CPF" />
+            <TableColumn fx:id="ColRua" prefWidth="124.0" text="Rua" />
+            <TableColumn fx:id="ColNumero" minWidth="5.0" prefWidth="42.0" text="N°" />
+            <TableColumn fx:id="colBairro" prefWidth="64.0" text="Bairro" />
+            <TableColumn fx:id="colComplemento" prefWidth="103.0" text="complemento" />
+            <TableColumn fx:id="colTelefone" prefWidth="87.0" text="Tel." />
         </columns>
       </TableView>
       <ImageView fitHeight="33.0" fitWidth="700.0" layoutX="50.0" layoutY="467.0" pickOnBounds="true" preserveRatio="true">

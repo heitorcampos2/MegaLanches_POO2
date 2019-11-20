@@ -6,6 +6,7 @@
 package servicos;
 
 import dados.daos.ProdutoDAO;
+import dados.entidades.Cliente;
 import dados.entidades.Produto;
 import java.util.List;
 
@@ -25,10 +26,16 @@ public class ProdutoServico {
         dao.adicionar(a);
         
     }
-    public List<Produto> listar(){
+    public List<Produto> listarProdutosNaTabela(){
         //qualquer regra de negocio (se aplicavel)
         //pedir a dao para listar e retornar
-        return dao.listar();
+        return dao.listarProdutosNaTabela();
+    
+    }
+    public List<Produto> listarPeloNomeProduto(String nome){
+        //qualquer regra de negocio (se aplicavel)
+        //pedir a dao para listar e retornar
+        return dao.listarPeloNomeProduto(nome);
     
     }
     
