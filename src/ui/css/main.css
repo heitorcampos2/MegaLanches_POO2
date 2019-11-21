@@ -11,7 +11,7 @@
 }
 
 .root{
-    -fx-background-color: white;
+    -fx-background-color: #262626;
     
 }
 
@@ -38,7 +38,7 @@
 }
 
 .jfx-text-field{
-   /* -jfx-unfocus-color: -fx-primary-light;*/
+   -jfx-unfocus-color: red;
 }
 
 .separator .line {
@@ -112,96 +112,42 @@
 }
 /**/
 
-/* Spaltenköpfe
-    Struktur column-header-background -> column-header */
-
-.table-view .column-header-background{
-    -fx-background-color: linear-gradient(#131313 0%, #424141 100%);
-}
-
-.table-view .column-header-background .label{
-    -fx-background-color: transparent;
-    -fx-text-fill: white;
-}
-
-.table-view .column-header {
-    -fx-background-color: transparent;
-}
-
-.table-view .table-cell{
-    -fx-text-fill: white;
-}
-
-.table-row-cell{
-    -fx-background-color: -fx-table-cell-border-color, #616161;
-    -fx-background-insets: 0, 0 0 1 0;
-    -fx-padding: 0.0em; /* 0 */
-}
-
-.table-row-cell:odd{
-    -fx-background-color: -fx-table-cell-border-color, #424242;
-    -fx-background-insets: 0, 0 0 1 0;
-    -fx-padding: 0.0em; /* 0 */  
-}
-
-.table-row-cell:selected {
-    -fx-background-color: red;
-    -fx-background-insets: 0;
-    -fx-background-radius: 1;
-}
-
-.table-view > .virtual-flow > .scroll-bar:vertical,
-.table-view > .virtual-flow > .scroll-bar:vertical > .track,
-.table-view > .virtual-flow > .scroll-bar:vertical > .track-background, 
-.table-view > .virtual-flow > .scroll-bar:horizontal,
-.table-view > .virtual-flow > .scroll-bar:horizontal > .track,
-.table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
-    -fx-background-color: transparent;
-}
-
-
-
-.table-view > .virtual-flow > .scroll-bar > .increment-button, 
-.table-view > .virtual-flow > .scroll-bar > .decrement-button {
-    -fx-opacity: 0;
-}
-
 /**/
 /*TAB-PANE - 01*/
-.tab-pane .tab-header-area .tab-header-background {
-    -fx-opacity: 0;
-}
+.jfx-tab-pane {
+    -fx-text-fill: red;
 
-.tab-pane
-{
-    -fx-tab-min-width:99px;
-}
+    }
+    
+    .jfx-tab-pane .headers-region {
+        -fx-background-color: black;
+        -fx-cursor:hand;
+    }
+    .jfx-tab-pane .tab-header-background {
+        -fx-background-color: black;
+    }
+    .jfx-tab-pane .tab-selected-line {
+        -fx-stroke: red;
+        -fx-stroke-width: 5pt;
+    }
 
-.tab{
-    -fx-background-insets: 0 1 0 1,0,0;
-}
-.tab-pane .tab
-{
-    -fx-background-color: black;
+    .jfx-tab-pane .tab:hover .tab-label {
+        -fx-text-fill:white;
+	    -fx-background-color:red !important;	
+	    -fx-background-radius: 0.0;
+    }
 
-}
+    .jfx-tab-pane .tab:selected .tab-label{
+        -fx-background-color:#FFFFFF27;
+    }
 
-.tab-pane .tab:selected
-{
-    -fx-background-color: grey;
-}
+    .jfx-tab-pane .tab-header-area .tab-selected-line
+    {
+        -fx-stroke: red;
+    }
+/**/
 
-.tab .tab-label { 
-    -fx-alignment: CENTER;
-    -fx-text-fill:  #f44336;/*vermelho*/
-    -fx-font-size: 15px;
-    -fx-font-weight: bold;
-}
-
-.tab:selected .tab-label { 
-    -fx-alignment: CENTER;
-    -fx-text-fill:  #f44336;/*vermelho*/
-}
+/**/
 /*tab-pane termina aqui*/
 .jfx-date-picker{
     -jfx-default-color: -fx-secondary-dark;
@@ -225,7 +171,7 @@
 * Configurações para a tabela 
 */
 .table-view {
-    -fx-background-color: -fx-primary-light;
+    -fx-background-color: grey;
 }
 
 .table-view .column-header,.table-view .filler {
@@ -252,6 +198,12 @@
 .table-view .scroll-bar:vertical  {
     -fx-background-color:-fx-primary-dark;
 
+}
+
+.table-row-cell:selected {
+    -fx-background-color: black;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
 }
 
 /**

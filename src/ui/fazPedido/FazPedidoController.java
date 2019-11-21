@@ -50,8 +50,6 @@ public class FazPedidoController implements Initializable {
     //criando um atributo que vai armazenar o Cliente que foi selecionado na tabela
     
      private Produto ProdutoSelecionado;
-    @FXML
-    
      private Cliente clienteSelecionado;
     @FXML
     private TableColumn colId;

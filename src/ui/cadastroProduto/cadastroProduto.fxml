@@ -19,7 +19,7 @@
       <JFXTextField fx:id="TextFieldNomeProduto" focusColor="RED" labelFloat="true" layoutX="153.0" layoutY="76.0" prefHeight="25.0" prefWidth="238.0" promptText="Nome do Produto" />
       <JFXTextField fx:id="TextFieldPrecoProduto" focusColor="RED" labelFloat="true" layoutX="404.0" layoutY="76.0" prefHeight="25.0" prefWidth="136.0" promptText="Preço do produto" />
       <JFXTextArea fx:id="TextAreaIngredientes" focusColor="RED" labelFloat="true" layoutX="21.0" layoutY="128.0" prefHeight="54.0" prefWidth="516.0" promptText="Ingredientes:" />
-      <JFXTextField fx:id="TextFieldID" focusColor="RED" labelFloat="true" layoutX="153.0" layoutY="31.0" prefHeight="25.0" prefWidth="95.0" promptText="ID" />
+      <JFXTextField fx:id="TextFieldID" editable="false" focusColor="RED" labelFloat="true" layoutX="153.0" layoutY="31.0" prefHeight="25.0" prefWidth="95.0" promptText="ID" />
       <JFXButton layoutX="550.0" layoutY="72.0" onAction="#adicionar" prefHeight="33.0" prefWidth="127.0" text="Salvar" />
       <JFXButton layoutX="549.0" layoutY="114.0" onAction="#editar" prefHeight="33.0" prefWidth="127.0" text="Editar" />
       <TableView fx:id="tabela" layoutX="18.0" layoutY="204.0" prefHeight="246.0" prefWidth="665.0">
