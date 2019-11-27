@@ -79,6 +79,29 @@
                      </children></AnchorPane>
                </content>
             </Tab>
+            <Tab fx:id="tabListaDePedidos" text="Lista de Pedidos">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tabelaPedido" layoutX="14.0" layoutY="91.0" prefHeight="243.0" prefWidth="312.0">
+                           <columns>
+                              <TableColumn prefWidth="100.0" text="N° do Pedido" />
+                              <TableColumn prefWidth="206.0" text="Data" />
+                           </columns>
+                        </TableView>
+                        <JFXButton layoutX="339.0" layoutY="416.0" onAction="#btnFinalizarPedido" text="Finalizar Pedido" />
+                        <JFXButton layoutX="213.0" layoutY="416.0" onAction="#btnDetalha" text="Detalhar" />
+                        <TableView fx:id="tabelaDetalhe" layoutX="339.0" layoutY="91.0" prefHeight="243.0" prefWidth="327.0">
+                           <columns>
+                              <TableColumn prefWidth="108.0" text="Produto" />
+                              <TableColumn prefWidth="79.0" text="Qtd" />
+                              <TableColumn prefWidth="79.0" text="Valor" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
          </tabs>
       </JFXTabPane>
    </children>
