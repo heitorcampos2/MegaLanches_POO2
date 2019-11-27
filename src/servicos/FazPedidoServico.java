@@ -22,7 +22,7 @@ public class FazPedidoServico {
     public void adicionar(PedidoProduto a){
         //fazer qualquer regra de negocio
         
-        //mandar o ator para a camada de dados
+        //mandar o pedidoProduto para a camada de dados
         //para ser salvo no banco de dados
         dao.adicionar(a);
         

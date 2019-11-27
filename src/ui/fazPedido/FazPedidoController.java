@@ -7,9 +7,15 @@ package ui.fazPedido;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import dados.dto.ProdutoPedido;
 import dados.entidades.Cliente;
+import dados.entidades.Pedido;
+import dados.entidades.PedidoProduto;
 import dados.entidades.Produto;
+import java.math.BigDecimal;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -21,6 +27,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.SelectionModel;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
@@ -29,6 +37,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import servicos.ClienteServico;
 import servicos.FazPedidoServico;
+import servicos.PedidoServico;
 import servicos.ProdutoServico;
 
 /**
@@ -42,12 +51,8 @@ public class FazPedidoController implements Initializable {
     private JFXTextField textFieldPesquisar;
     @FXML
     private TableView<Cliente> tabela;
- //Atributo para representar o servico
-    private FazPedidoServico servico = new FazPedidoServico();
-    private ClienteServico ClienteServico = new ClienteServico();
-    //private ClienteServico ProdutoServico = new ProdutoServico();
+    
     private ObservableList<Cliente> dados = FXCollections.observableArrayList();
-    //criando um atributo que vai armazenar o Cliente que foi selecionado na tabela
     
      private Produto ProdutoSelecionado;
      private Cliente clienteSelecionado;
@@ -59,11 +64,17 @@ public class FazPedidoController implements Initializable {
     private JFXTextField textFieldPesquisarProduto;
     @FXML
     private TableView<Produto> tabelaDisponiveis;
-    //Atributo para representar o servico
-    private ProdutoServico ProdutoServico = new ProdutoServico();
-    //private ProdutoServico ProdutoServico = new ProdutoServico();
+   
+   
     private ObservableList<Produto> dados_p = FXCollections.observableArrayList();
-    //criando um atributo que vai armazenar o Cliente que foi selecionado na tabela
+     
+    
+    //SERVIÇOS
+     //Atributo para representar o servico
+    private FazPedidoServico FazPedidoservico = new FazPedidoServico();
+    private ClienteServico ClienteServico = new ClienteServico();
+    private ProdutoServico ProdutoServico = new ProdutoServico();
+    private PedidoServico PedidoServico = new PedidoServico();
     @FXML
     private TableColumn colProduto;
     @FXML
@@ -79,13 +90,17 @@ public class FazPedidoController implements Initializable {
     @FXML
     private Tab tabResumo;
     @FXML
-    private TableColumn<?, ?> colProdutoSelecionado;
+    private TableColumn colProdutoSelecionado;
     @FXML
-    private TableColumn<?, ?> colPrecoSelecionado;
+    private TableColumn colPrecoSelecionado;
     @FXML
-    private TableColumn<?, ?> colQtdSelecionado;
+    private TableColumn colQtdSelecionado;
     @FXML
     private JFXTextField TextFieldeClienteResumo;
+    
+    private List<PedidoProduto> Temp = new ArrayList<PedidoProduto>();
+    @FXML
+    private Spinner<Integer> spinnerQuantidade;
     /**
      * Initializes the controller class.
      */
@@ -99,6 +114,7 @@ public class FazPedidoController implements Initializable {
         listarClientesNaTabela();
         listarProdutosNaTabela();        
     
+        spinnerQuantidade.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100));
     } 
     //#########mensagens#####
     
@@ -144,7 +160,7 @@ public class FazPedidoController implements Initializable {
         colProduto.setCellValueFactory(new PropertyValueFactory("nome_p"));//*
         colPreco.setCellValueFactory(new PropertyValueFactory("preco_un"));
         
-    }//configurarTabela
+    }//configurarTabelaDisponiveis
     
      private void listarClientesNaTabela(){
         
@@ -244,18 +260,77 @@ public class FazPedidoController implements Initializable {
 
     @FXML
     private void AvancarResumo(ActionEvent event) {
+        
+        
+        
         ProdutoSelecionado = tabelaDisponiveis.getSelectionModel().getSelectedItem();
         if(ProdutoSelecionado!= null){//existe cliente selecionado
             
            
                SelectionModel<Tab> sm = tabPaneFazPedido.getSelectionModel();
-        sm.select(tabResumo);
+            sm.select(tabResumo);
           
     
            }else{
              mensagemErro("Selecione um Produto.");
          
          }
+    }
+
+    @FXML
+    private void AdcionarNoPedido(ActionEvent event) {
+        
+        //Pegar o produto selecionado
+        ProdutoSelecionado = tabelaDisponiveis.getSelectionModel().getSelectedItem();
+        if(ProdutoSelecionado!= null){//existe Produto selecionado
+            
+          BigDecimal preco = ProdutoSelecionado.getPreco_un();
+          Integer quantidade = spinnerQuantidade.getValue();
+          
+         //
+          PedidoProduto p = new PedidoProduto();
+          p.setPreco(preco);
+          p.setQtd(quantidade);
+          p.setProduto(ProdutoSelecionado);
+          
+          //Armazenando na lista
+          Temp.add(p);
+          
+           
+          
+    
+           }else{
+             mensagemErro("Selecione um Produto.");
+         
+         }
+    }
+
+    @FXML
+    private void excluirDoPedido(ActionEvent event) {
+    }
+
+    @FXML
+    private void FinalizarPedido(ActionEvent event) {
+        
+        Pedido pedido = new Pedido(LocalDateTime.now(), clienteSelecionado);
+        
+        pedido = PedidoServico.adicionar(pedido);
+        
+        
+        
+        System.out.println(pedido.getId_pedido());
+        
+        //Para cada produto na lista temporaria
+        //inserir um pedido produto
+        for(PedidoProduto pp : Temp){
+            
+            //Associando o pp ao pedido
+            pp.setPedido(pedido);
+            //Mandar o servico salvar
+            FazPedidoservico.adicionar(pp);
+            
+        }
+        
     }
 }
         
