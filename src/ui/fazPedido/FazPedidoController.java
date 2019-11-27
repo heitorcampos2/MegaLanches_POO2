@@ -52,7 +52,7 @@ public class FazPedidoController implements Initializable {
     @FXML
     private TableView<Cliente> tabela;
     
-    private ObservableList<Cliente> dados = FXCollections.observableArrayList();
+    
     
      private Produto ProdutoSelecionado;
      private Cliente clienteSelecionado;
@@ -65,9 +65,10 @@ public class FazPedidoController implements Initializable {
     @FXML
     private TableView<Produto> tabelaDisponiveis;
    
-   
+   //atributos que representam os dados para a tabela
+    private ObservableList<Cliente> dados = FXCollections.observableArrayList();
     private ObservableList<Produto> dados_p = FXCollections.observableArrayList();
-     
+    private ObservableList<PedidoProduto> dadosPedidoProduto = FXCollections.observableArrayList();
     
     //SERVIÇOS
      //Atributo para representar o servico
@@ -115,6 +116,8 @@ public class FazPedidoController implements Initializable {
         listarProdutosNaTabela();        
     
         spinnerQuantidade.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100));
+        
+        tabelaSelecionados.setItems(dadosPedidoProduto);
     } 
     //#########mensagens#####
     
@@ -157,8 +160,12 @@ public class FazPedidoController implements Initializable {
         colId.setCellValueFactory(new PropertyValueFactory("id_cliente"));
         colNome.setCellValueFactory(new PropertyValueFactory("nome"));
         
-        colProduto.setCellValueFactory(new PropertyValueFactory("nome_p"));//*
+        colProduto.setCellValueFactory(new PropertyValueFactory("nome_p"));
         colPreco.setCellValueFactory(new PropertyValueFactory("preco_un"));
+        
+        colProdutoSelecionado.setCellValueFactory(new PropertyValueFactory("produto"));
+        colPrecoSelecionado.setCellValueFactory(new PropertyValueFactory("preco"));
+        colQtdSelecionado.setCellValueFactory(new PropertyValueFactory("qtd"));
         
     }//configurarTabelaDisponiveis
     
@@ -196,6 +203,24 @@ public class FazPedidoController implements Initializable {
         
         tabelaDisponiveis.setItems(dados_p);
     }
+      
+      //responsavel por carregar a lista de Clientes na tabela
+        private void listarPedidoProdutoNaTabela(){
+        
+        //limpar quaisquer dados anteriores
+        
+        dadosPedidoProduto.clear();
+        //solicitando a camada de servoços a lista de Clientes
+        List<PedidoProduto> PedidoProduto = FazPedidoservico.listar();
+        
+        //transformar a lista de Clientes no formato que a tabela
+        //do javaFX aceita
+        dadosPedidoProduto = FXCollections.observableArrayList(PedidoProduto);
+        //jogando os dados na tabela
+        
+        tabela.setItems(dados);
+ 
+        }
 
     @FXML
     private void PesquisarProduto(ActionEvent event) {
@@ -294,9 +319,12 @@ public class FazPedidoController implements Initializable {
           p.setProduto(ProdutoSelecionado);
           
           //Armazenando na lista
-          Temp.add(p);
+          dadosPedidoProduto.add(p);
           
-           
+         //adicionar na tabelaSelecionados
+         
+         
+           tabelaSelecionados.setItems(dadosPedidoProduto);
           
     
            }else{
@@ -322,7 +350,7 @@ public class FazPedidoController implements Initializable {
         
         //Para cada produto na lista temporaria
         //inserir um pedido produto
-        for(PedidoProduto pp : Temp){
+        for(PedidoProduto pp : dadosPedidoProduto){
             
             //Associando o pp ao pedido
             pp.setPedido(pedido);

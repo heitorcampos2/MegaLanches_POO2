@@ -32,7 +32,7 @@ public class FazPedidoDAO {
         
     }
     
-     public List<Cliente> listarCliente(){
+     public List<PedidoProduto> listar(){
         //Pegando o gerenciador de acesso ao BD
         EntityManager gerenciador = JPAUtil.getGerenciador();
         

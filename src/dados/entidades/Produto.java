@@ -69,6 +69,10 @@ public class Produto {
         this.nome_p = nome_p;
     }
     
+    public String toString(){
+        return nome_p;
+    }
+    
     
 
     @Override

@@ -25,11 +25,17 @@ public class FazPedidoServico {
         //mandar o pedidoProduto para a camada de dados
         //para ser salvo no banco de dados
         dao.adicionar(a);
-        
     }
+        public List<PedidoProduto> listar(){
+        //qualquer regra de negocio (se aplicavel)
+        //pedir a dao para listar e retornar
+        return dao.listar();
+    
+    }
+    }
+
     
     
     
     
-    
-}
+
