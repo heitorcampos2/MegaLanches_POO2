@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.cadastroProduto.CadastroProdutoController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="707.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.cadastroProduto.CadastroProdutoController">
    <children>
       <ImageView fitHeight="90.0" fitWidth="95.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -27,7 +27,7 @@
           <TableColumn fx:id="colId" prefWidth="51.0" text="ID" />
           <TableColumn fx:id="colProduto" prefWidth="143.0" text="Produto" />
             <TableColumn fx:id="colValor" prefWidth="78.0" text="Valor" />
-            <TableColumn fx:id="colIngredientes" prefWidth="385.0" text="Ingredientes" />
+            <TableColumn fx:id="colIngredientes" prefWidth="390.0" text="Ingredientes" />
         </columns>
       </TableView>
       <JFXButton layoutX="550.0" layoutY="156.0" onAction="#excluir" prefHeight="33.0" prefWidth="127.0" text="Excluir" />

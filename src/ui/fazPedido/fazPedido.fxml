@@ -43,7 +43,7 @@
                         <TableView fx:id="tabelaDisponiveis" layoutX="19.0" layoutY="98.0" prefHeight="295.0" prefWidth="296.0">
                           <columns>
                             <TableColumn fx:id="colProduto" prefWidth="200.0" text="Produto" />
-                            <TableColumn fx:id="colPreco" prefWidth="74.0" text="Preço" />
+                            <TableColumn fx:id="colPreco" prefWidth="91.0" text="Preço" />
                           </columns>
                         </TableView>
                         <JFXButton layoutX="572.0" layoutY="419.0" onAction="#AvancarResumo" text="Avançar" />
@@ -67,7 +67,7 @@
                            <columns>
                               <TableColumn fx:id="colProdutoSelecionado" prefWidth="191.0" text="Produto" />
                               <TableColumn fx:id="colPrecoSelecionado" prefWidth="79.0" text="Preço" />
-                              <TableColumn fx:id="colQtdSelecionado" prefWidth="74.0" text="Qtd" />
+                              <TableColumn fx:id="colQtdSelecionado" prefWidth="76.0" text="Qtd" />
                            </columns>
                         </TableView>
                         <JFXButton layoutX="210.0" layoutY="419.0" onAction="#AdcionarNoPedido" prefHeight="33.0" prefWidth="123.0" text="Adicionar" />
@@ -87,9 +87,9 @@
                         <JFXTextField fx:id="TextFieldeClienteResumo" editable="false" labelFloat="true" layoutX="34.0" layoutY="42.0" prefHeight="25.0" prefWidth="397.0" promptText="Cliente" unFocusColor="RED" />
                         <TableView layoutX="31.0" layoutY="82.0" prefHeight="314.0" prefWidth="602.0">
                            <columns>
-                              <TableColumn prefWidth="191.0" text="Produto" />
-                              <TableColumn prefWidth="79.0" text="Preço" />
-                              <TableColumn prefWidth="74.0" text="Qtd" />
+                              <TableColumn prefWidth="204.0" text="Produto" />
+                              <TableColumn prefWidth="83.0" text="Qtd" />
+                              <TableColumn prefWidth="92.0" text="Preço" />
                            </columns>
                         </TableView>
                         <JFXButton layoutX="466.0" layoutY="413.0" onAction="#FinalizarPedido" text="Finalizar Pedido" />
@@ -109,16 +109,16 @@
                            <columns>
                               <TableColumn prefWidth="100.0" text="Id Pedido" />
                               <TableColumn prefWidth="106.0" text="Cliente" />
-                              <TableColumn prefWidth="143.0" text="Data" />
+                              <TableColumn prefWidth="161.0" text="Data" />
                            </columns>
                         </TableView>
                         <JFXButton layoutX="402.0" layoutY="416.0" onAction="#btnFinalizarPedido" text="Finalizar Pedido" />
                         <JFXButton layoutX="278.0" layoutY="416.0" onAction="#btnDetalha" text="Detalhar" />
                         <TableView fx:id="tabelaDetalhe" layoutX="402.0" layoutY="84.0" prefHeight="311.0" prefWidth="278.0">
                            <columns>
-                              <TableColumn prefWidth="108.0" text="Produto" />
-                              <TableColumn prefWidth="79.0" text="Qtd" />
-                              <TableColumn prefWidth="79.0" text="Valor" />
+                              <TableColumn prefWidth="129.0" text="Produto" />
+                              <TableColumn prefWidth="58.0" text="Qtd" />
+                              <TableColumn prefWidth="86.0" text="Valor" />
                            </columns>
                         </TableView>
                      </children>
