@@ -38,6 +38,7 @@
 }
 
 .jfx-text-field{
+    -fx-prompt-text-fill: white;
    -jfx-unfocus-color: red;
 }
 
@@ -162,7 +163,7 @@
 }
 
 .label{
-    -fx-text-fill:  black;/*vermelho*/
+    -fx-text-fill:  white;
 	-fx-font-size: 15px;
     -fx-font-weight: bold;
 }
