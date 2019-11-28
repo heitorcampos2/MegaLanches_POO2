@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ui.main;
 
 import javafx.scene.image.Image;
@@ -14,21 +9,23 @@ import javafx.stage.Stage;
 
 /**
  *
+ * @author Heitor
  * @author david
+ *
  */
 public class Main extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("principal.fxml"));
-        
+
         Scene scene = new Scene(root);
         //icone na janela
         stage.getIcons().add(new Image("ui/imagens/icones-02.png"));
-        
+
         //Abrir maximizado
         stage.setMaximized(true);
-        
+
         stage.setScene(scene);
         stage.show();
     }
@@ -39,5 +36,5 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

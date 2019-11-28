@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dados.entidades;
 
 //import java.math.BigDecimal;
@@ -15,26 +10,25 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 //import javax.persistence.OneToMany;
 
-/**
- *
- * @author david
- */
 @Entity
 public class Pedido {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_pedido;
     private LocalDateTime data_pedido;
-    
-    @ManyToOne(optional=false)
+
+    @ManyToOne(optional = false)
     private Cliente cliente;
-    public Pedido(LocalDateTime data,Cliente cliente){
+
+    public Pedido(LocalDateTime data, Cliente cliente) {
         this.setData_pedido(data);
-        this.setCliente(cliente);    
+        this.setCliente(cliente);
     }
-    
-    public Pedido(){}
-    
+
+    public Pedido() {
+    }
+
     public Integer getId_pedido() {
         return id_pedido;
     }
@@ -83,7 +77,5 @@ public class Pedido {
         }
         return true;
     }
-    
-    
-     
+
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ui.fazPedido;
 
 import com.jfoenix.controls.JFXButton;
@@ -40,22 +35,15 @@ import servicos.FazPedidoServico;
 import servicos.PedidoServico;
 import servicos.ProdutoServico;
 
-/**
- * FXML Controller class
- *
- * @author HeiThor
- */
 public class FazPedidoController implements Initializable {
 
     @FXML
     private JFXTextField textFieldPesquisar;
     @FXML
     private TableView<Cliente> tabela;
-    
-    
-    
-     private Produto ProdutoSelecionado;
-     private Cliente clienteSelecionado;
+
+    private Produto ProdutoSelecionado;
+    private Cliente clienteSelecionado;
     @FXML
     private TableColumn colId;
     @FXML
@@ -64,14 +52,14 @@ public class FazPedidoController implements Initializable {
     private JFXTextField textFieldPesquisarProduto;
     @FXML
     private TableView<Produto> tabelaDisponiveis;
-   
-   //atributos que representam os dados para a tabela
+
+    //atributos que representam os dados para a tabela
     private ObservableList<Cliente> dados = FXCollections.observableArrayList();
     private ObservableList<Produto> dados_p = FXCollections.observableArrayList();
     private ObservableList<PedidoProduto> dadosPedidoProduto = FXCollections.observableArrayList();
-    
+
     //SERVIÇOS
-     //Atributo para representar o servico
+    //Atributo para representar o servico
     private FazPedidoServico FazPedidoservico = new FazPedidoServico();
     private ClienteServico ClienteServico = new ClienteServico();
     private ProdutoServico ProdutoServico = new ProdutoServico();
@@ -98,7 +86,7 @@ public class FazPedidoController implements Initializable {
     private TableColumn colQtdSelecionado;
     @FXML
     private JFXTextField TextFieldeClienteResumo;
-    
+
     private List<PedidoProduto> Temp = new ArrayList<PedidoProduto>();
     @FXML
     private Spinner<Integer> spinnerQuantidade;
@@ -108,235 +96,228 @@ public class FazPedidoController implements Initializable {
     private TableView<?> tabelaPedido;
     @FXML
     private TableView<?> tabelaDetalhe;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+
         //configurar tabela
         configurarTabela();
         //carregar a lista de Clientes na tabela
         listarClientesNaTabela();
-        listarProdutosNaTabela();        
-    
+        listarProdutosNaTabela();
+
         spinnerQuantidade.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100));
-        
+
         tabelaSelecionados.setItems(dadosPedidoProduto);
-    } 
+    }
     //#########mensagens#####
-    
+
     //mensagem sucesso
-    public void mensagemSucesso(String m ){
-        
+    public void mensagemSucesso(String m) {
+
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle("Sucesso!"); //título
         alerta.setHeaderText(null); //cabeçalho (opcional)
         alerta.setContentText(m);// conteudo
         alerta.showAndWait(); //mostrando o alerta
     }
- 
- //exibe uma mensagem de erro
-    public void mensagemErro(String m){
+
+    //exibe uma mensagem de erro
+    public void mensagemErro(String m) {
         Alert alerta = new Alert(Alert.AlertType.ERROR);
-        alerta.setTitle("SUCESSO!"); 
-        alerta.setHeaderText(null); 
+        alerta.setTitle("SUCESSO!");
+        alerta.setHeaderText(null);
         alerta.setContentText(m);
-        alerta.showAndWait(); 
+        alerta.showAndWait();
     }
-    
+
     //exibe uma mensagem de confirmação
-    private Optional<ButtonType> mensagemDeConfirmacao(String mensagem, String titulo){
+    private Optional<ButtonType> mensagemDeConfirmacao(String mensagem, String titulo) {
         Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
-        alerta.setTitle(titulo); 
-        alerta.setHeaderText(null); 
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null);
         alerta.setContentText(mensagem);
-        
+
         return alerta.showAndWait();
     }
+
     //#####ConfigurarTabela
-    private void configurarTabela(){
+    private void configurarTabela() {
         //dixer onde a coluna vai pegar o valor para
         //exibir, basta dizer o nome do metodo get que 
         //deve ser chamado para cada coluna
         //a String entre parenteses e o nome do 
-       //atributo que vc deseja chamar o get (qause sempre)
-        
+        //atributo que vc deseja chamar o get (qause sempre)
+
         colId.setCellValueFactory(new PropertyValueFactory("id_cliente"));
         colNome.setCellValueFactory(new PropertyValueFactory("nome"));
-        
+
         colProduto.setCellValueFactory(new PropertyValueFactory("nome_p"));
         colPreco.setCellValueFactory(new PropertyValueFactory("preco_un"));
-        
+
         colProdutoSelecionado.setCellValueFactory(new PropertyValueFactory("produto"));
         colPrecoSelecionado.setCellValueFactory(new PropertyValueFactory("preco"));
         colQtdSelecionado.setCellValueFactory(new PropertyValueFactory("qtd"));
-        
+
     }//configurarTabelaDisponiveis
-    
-     private void listarClientesNaTabela(){
-        
+
+    private void listarClientesNaTabela() {
+
         //limpar quaisquer dados anteriores
-        
         dados.clear();
         //solicitando a camada de servoços a lista de Clientes
         List<Cliente> Cliente = ClienteServico.listar();
-        
+
         //transformar a lista de Clientes no formato que a tabela
         //do javaFX aceita
         dados = FXCollections.observableArrayList(Cliente);
         //jogando os dados na tabela
-        
+
         tabela.setItems(dados);
- 
-        }
-     
-      private void listarProdutosNaTabela() {
+
+    }
+
+    private void listarProdutosNaTabela() {
         //limpar quaisquer dados anteriores
-        
         dados_p.clear();
+        
         //pegar nome da pessoa q deseja pesquisar
         String nome = textFieldPesquisarProduto.getText();
-        
+
         //solicitando a camada de serviços a lista de Produto
         List<Produto> Produto = ProdutoServico.listarProdutosNaTabela();
-        
+
         //transformar a lista de Produtos no formato que a tabela
         //do javaFX aceita
-        dados_p  = FXCollections.observableArrayList(Produto);
-        //jogando os dados na tabela
+        dados_p = FXCollections.observableArrayList(Produto);
         
+        //jogando os dados na tabela
         tabelaDisponiveis.setItems(dados_p);
     }
-      
-      //responsavel por carregar a lista de Clientes na tabela
-        private void listarPedidoProdutoNaTabela(){
-        
+
+    //responsavel por carregar a lista de Clientes na tabela
+    private void listarPedidoProdutoNaTabela() {
+
         //limpar quaisquer dados anteriores
-        
         dadosPedidoProduto.clear();
+        
         //solicitando a camada de servoços a lista de Clientes
         List<PedidoProduto> PedidoProduto = FazPedidoservico.listar();
-        
+
         //transformar a lista de Clientes no formato que a tabela
         //do javaFX aceita
         dadosPedidoProduto = FXCollections.observableArrayList(PedidoProduto);
-        //jogando os dados na tabela
         
+        //jogando os dados na tabela
         tabela.setItems(dados);
- 
-        }
+
+    }
 
     @FXML
     private void PesquisarProduto(ActionEvent event) {
-        
+
         //limpar quaisquer dados anteriores        
         dados_p.clear();
+        
         //pegar nome da pessoa q deseja pesquisar
         String nome = textFieldPesquisarProduto.getText();
-        
+
         //solicitando a camada de serviços a lista de Clientes
         List<Produto> Produto = ProdutoServico.listarPeloNomeProduto(nome);
-        
+
         //transformar a lista de Clientes no formato que a tabela
         //do javaFX aceita
-        dados_p  = FXCollections.observableArrayList(Produto);
+        dados_p = FXCollections.observableArrayList(Produto);
+
         //jogando os dados na tabela
-        
         tabelaDisponiveis.setItems(dados_p);
     }
 
     @FXML
     private void PesquisarCliente(ActionEvent event) {
-        
+
         //limpar quaisquer dados anteriores        
         dados.clear();
+        
         //pegar nome da pessoa q deseja pesquisar
         String nome = textFieldPesquisar.getText();
-        
+
         //solicitando a camada de serviços a lista de Clientes
         List<Cliente> Cliente = ClienteServico.listarPeloNomeCliente(nome);
-        
+
         //transformar a lista de Clientes no formato que a tabela
         //do javaFX aceita
         dados = FXCollections.observableArrayList(Cliente);
-        //jogando os dados na tabela
         
+        //jogando os dados na tabela
         tabela.setItems(dados);
     }
 
     @FXML
     private void SelecionarCliente(ActionEvent event) {
-       
-        
-         // pegar o Cliente que foi selecionado na tabela
+
+        // pegar o Cliente que foi selecionado na tabela
         clienteSelecionado = tabela.getSelectionModel().getSelectedItem();
-        
-         if(clienteSelecionado!= null){//existe cliente selecionado
-            
-           
-               SelectionModel<Tab> sm = tabPaneFazPedido.getSelectionModel();
-        sm.select(TabProduto);
-          
-    
-           }else{
-             mensagemErro("Selecione um Cliente.");
-         
-         }
-           
-        TextFieldeClienteResumo.setText( clienteSelecionado.getNome());
-        
+
+        if (clienteSelecionado != null) {//existe cliente selecionado
+
+            SelectionModel<Tab> sm = tabPaneFazPedido.getSelectionModel();
+            sm.select(TabProduto);
+
+        } else {
+            mensagemErro("Selecione um Cliente.");
+
+        }
+
+        TextFieldeClienteResumo.setText(clienteSelecionado.getNome());
+
     }
 
     @FXML
     private void AvancarResumo(ActionEvent event) {
-        
-        
-        
+
         ProdutoSelecionado = tabelaDisponiveis.getSelectionModel().getSelectedItem();
-        if(ProdutoSelecionado!= null){//existe cliente selecionado
-            
-           
-               SelectionModel<Tab> sm = tabPaneFazPedido.getSelectionModel();
+        if (ProdutoSelecionado != null) {//existe cliente selecionado
+
+            SelectionModel<Tab> sm = tabPaneFazPedido.getSelectionModel();
             sm.select(tabResumo);
-          
-    
-           }else{
-             mensagemErro("Selecione um Produto.");
-         
-         }
+
+        } else {
+            mensagemErro("Selecione um Produto.");
+
+        }
     }
 
     @FXML
     private void AdcionarNoPedido(ActionEvent event) {
-        
+
         //Pegar o produto selecionado
         ProdutoSelecionado = tabelaDisponiveis.getSelectionModel().getSelectedItem();
-        if(ProdutoSelecionado!= null){//existe Produto selecionado
-            
-          BigDecimal preco = ProdutoSelecionado.getPreco_un();
-          Integer quantidade = spinnerQuantidade.getValue();
-          
-         //
-          PedidoProduto p = new PedidoProduto();
-          p.setPreco(preco);
-          p.setQtd(quantidade);
-          p.setProduto(ProdutoSelecionado);
-          
-          //Armazenando na lista
-          dadosPedidoProduto.add(p);
-          
-         //adicionar na tabelaSelecionados
-         
-         
-           tabelaSelecionados.setItems(dadosPedidoProduto);
-          
-    
-           }else{
-             mensagemErro("Selecione um Produto.");
-         
-         }
+        if (ProdutoSelecionado != null) {//existe Produto selecionado
+
+            BigDecimal preco = ProdutoSelecionado.getPreco_un();
+            Integer quantidade = spinnerQuantidade.getValue();
+
+            //
+            PedidoProduto p = new PedidoProduto();
+            p.setPreco(preco);
+            p.setQtd(quantidade);
+            p.setProduto(ProdutoSelecionado);
+
+            //Armazenando na lista
+            dadosPedidoProduto.add(p);
+
+            //adicionar na tabelaSelecionados
+            tabelaSelecionados.setItems(dadosPedidoProduto);
+
+        } else {
+            mensagemErro("Selecione um Produto.");
+
+        }
     }
 
     @FXML
@@ -345,26 +326,24 @@ public class FazPedidoController implements Initializable {
 
     @FXML
     private void FinalizarPedido(ActionEvent event) {
-        
+
         Pedido pedido = new Pedido(LocalDateTime.now(), clienteSelecionado);
-        
+
         pedido = PedidoServico.adicionar(pedido);
-        
-        
-        
+
         System.out.println(pedido.getId_pedido());
-        
+
         //Para cada produto na lista temporaria
         //inserir um pedido produto
-        for(PedidoProduto pp : dadosPedidoProduto){
-            
+        for (PedidoProduto pp : dadosPedidoProduto) {
+
             //Associando o pp ao pedido
             pp.setPedido(pedido);
             //Mandar o servico salvar
             FazPedidoservico.adicionar(pp);
-            
+
         }
-        
+
     }
 
     @FXML
@@ -375,9 +354,3 @@ public class FazPedidoController implements Initializable {
     private void btnDetalha(ActionEvent event) {
     }
 }
-        
-        
-    
-
-    
-

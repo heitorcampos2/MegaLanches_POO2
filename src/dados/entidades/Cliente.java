@@ -1,4 +1,3 @@
-
 package dados.entidades;
 
 import java.util.Objects;
@@ -7,12 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- *
- * @author david
- */
 @Entity
 public class Cliente {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_cliente;
@@ -20,27 +16,26 @@ public class Cliente {
     private String cpf;
     private String telefone;
     private String rua;
-    private String complemento; 
-   private String bairro;
+    private String complemento;
+    private String bairro;
     private String numero;
-    
-    
-    
+
     //construtor vazio da JPA obrigatorio
-    public Cliente(){}
-    
+    public Cliente() {
+    }
+
     //criando consyrutores desejados
-    public Cliente (String n,String CPF, String t, String r, String c,String b,
-            String Num){
-        
-       this.setNome(n);
-       this.setCpf(CPF);
-       this.setTelefone(t);
-       this.setRua(r);
-       this.setComplemento(c);
-       this.setBairro(b);
-       this.setNumero(Num);
-    
+    public Cliente(String n, String CPF, String t, String r, String c, String b,
+            String Num) {
+
+        this.setNome(n);
+        this.setCpf(CPF);
+        this.setTelefone(t);
+        this.setRua(r);
+        this.setComplemento(c);
+        this.setBairro(b);
+        this.setNumero(Num);
+
     }
 
     public Cliente(String text) {
@@ -110,9 +105,7 @@ public class Cliente {
     public void setNumero(String numero) {
         this.numero = numero;
     }
-    
-    
-    
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -138,5 +131,4 @@ public class Cliente {
         return true;
     }
 
-    
 }

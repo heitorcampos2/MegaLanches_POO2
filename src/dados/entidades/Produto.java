@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dados.entidades;
 
 import java.math.BigDecimal;
@@ -12,29 +7,29 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- *
- * @author david
- */
 @Entity
 public class Produto {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_produto;
     private String nome_p;
     private BigDecimal preco_un;
     private String ingredientes;
-    
-    public Produto(){};
 
-    public Produto(String n, BigDecimal p, String i){
-        
+    public Produto() {
+    }
+
+    ;
+
+    public Produto(String n, BigDecimal p, String i) {
+
         this.setNome_p(n);
         this.setPreco_un(p);
-        this.setIngredientes(i);   
-    
+        this.setIngredientes(i);
+
     }
+
     public Integer getId_produto() {
         return id_produto;
     }
@@ -42,8 +37,6 @@ public class Produto {
     public void setId_produto(Integer id_produto) {
         this.id_produto = id_produto;
     }
-
-    
 
     public BigDecimal getPreco_un() {
         return preco_un;
@@ -68,12 +61,10 @@ public class Produto {
     public void setNome_p(String nome_p) {
         this.nome_p = nome_p;
     }
-    
-    public String toString(){
+
+    public String toString() {
         return nome_p;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -99,6 +90,5 @@ public class Produto {
         }
         return true;
     }
-    
-    
+
 }
