@@ -20,25 +20,16 @@
 */
 
 
-.text-field
-{/*
-    -fx-prompt-text-fill: grey; 
-    -fx-text-fill: #f44336; 
-    -jfx-focus-color: #f44336;
-    -fx-background-color: black , white , white;
-    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 2 -1;
-}*/
+.text-area {
+    -fx-prompt-text-fill: white;
+    -fx-text-fill:  white;
+   -jfx-unfocus-color: red;
+   }
 
-.text-area
-{
-   /* -fx-prompt-text-fill: -fx-secondary; /*vermelho*/
-    /*-fx-text-fill: -fx-secondary; /*vermelho*/
-    /*-jfx-focus-color: -fx-secondary-dark;*/
-    
-}
 
 .jfx-text-field{
     -fx-prompt-text-fill: white;
+    -fx-text-fill:  white;
    -jfx-unfocus-color: red;
 }
 
@@ -46,16 +37,7 @@
     -fx-border-color: red;/*vermelho*/
 }
 
-/*.jfx-button{
-    -jfx-button-type: RAISED;
-    -fx-background-color: #f44336;/*vermelho*/
-/*}*/
-
-/* 
- * Metro style Push Button
- * Author: Pedro Duque Vieira
- * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
- */
+/*botões*/
 .button {
 
     -fx-padding: 5 22 5 22;   
@@ -145,6 +127,10 @@
     .jfx-tab-pane .tab-header-area .tab-selected-line
     {
         -fx-stroke: red;
+    }
+
+    .jfx-tab-pane .control-buttons-tab .jfx-rippler{
+        -jfx-rippler-fill: red;
     }
 /**/
 
@@ -271,5 +257,5 @@
 .dialog-pane:header .header-panel .label {
     -fx-font-style: italic;
     -fx-font-size: 2em;
-}}
+}
 

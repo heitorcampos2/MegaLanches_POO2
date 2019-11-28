@@ -84,7 +84,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <JFXTextField fx:id="TextFieldeClienteResumo" labelFloat="true" layoutX="34.0" layoutY="42.0" prefHeight="25.0" prefWidth="397.0" promptText="Cliente" unFocusColor="RED" />
+                        <JFXTextField fx:id="TextFieldeClienteResumo" editable="false" labelFloat="true" layoutX="34.0" layoutY="42.0" prefHeight="25.0" prefWidth="397.0" promptText="Cliente" unFocusColor="RED" />
                         <TableView layoutX="31.0" layoutY="82.0" prefHeight="314.0" prefWidth="602.0">
                            <columns>
                               <TableColumn prefWidth="191.0" text="Produto" />

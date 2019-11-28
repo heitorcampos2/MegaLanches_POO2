@@ -8,21 +8,21 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.cadastroCliente.CadastroClienteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="700.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.cadastroCliente.CadastroClienteController">
    <children>
       <ImageView fitHeight="90.0" fitWidth="95.0" layoutX="4.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../imagens/cliente2.jpg" />
+            <Image url="@../imagens/cliente2.png" />
          </image>
       </ImageView>
-      <JFXTextField fx:id="TextFieldID" editable="false" labelFloat="true" layoutX="107.0" layoutY="16.0" prefHeight="25.0" prefWidth="72.0" promptText="ID" />
+      <JFXTextField fx:id="TextFieldID" editable="false" labelFloat="true" layoutX="107.0" layoutY="14.0" prefHeight="25.0" prefWidth="72.0" promptText="ID" />
       <JFXTextField fx:id="TextFieldNome" labelFloat="true" layoutX="107.0" layoutY="56.0" prefHeight="25.0" prefWidth="262.0" promptText="Nome" />
       <JFXTextField fx:id="TextFieldCPF" labelFloat="true" layoutX="390.0" layoutY="56.0" prefHeight="25.0" prefWidth="95.0" promptText="CPF" />
-      <JFXTextField fx:id="TextFieldTelefone" labelFloat="true" layoutX="329.0" layoutY="144.0" prefHeight="25.0" prefWidth="159.0" promptText="Telefone" />
       <JFXTextField fx:id="TextFieldRua" labelFloat="true" layoutX="20.0" layoutY="100.0" prefHeight="25.0" prefWidth="353.0" promptText="Rua" />
-      <JFXTextField fx:id="TextFieldBairro" labelFloat="true" layoutX="20.0" layoutY="144.0" prefHeight="25.0" prefWidth="121.0" promptText="Bairro" />
       <JFXTextField fx:id="TextFieldNumero" labelFloat="true" layoutX="390.0" layoutY="100.0" prefHeight="25.0" prefWidth="95.0" promptText="Nº" />
+      <JFXTextField fx:id="TextFieldBairro" labelFloat="true" layoutX="20.0" layoutY="144.0" prefHeight="25.0" prefWidth="121.0" promptText="Bairro" />
       <JFXTextField fx:id="TextFieldComplemento" labelFloat="true" layoutX="164.0" layoutY="144.0" prefHeight="25.0" prefWidth="149.0" promptText="Complemento (opcional)" />
+      <JFXTextField fx:id="TextFieldTelefone" labelFloat="true" layoutX="329.0" layoutY="144.0" prefHeight="25.0" prefWidth="159.0" promptText="Telefone" />
       <JFXButton layoutX="524.0" layoutY="69.0" onAction="#adicionar" prefHeight="33.0" prefWidth="121.0" text="Salvar" />
       <JFXButton layoutX="525.0" layoutY="108.0" onAction="#editar" prefHeight="33.0" prefWidth="121.0" text="Editar" />
       <JFXButton layoutX="524.0" layoutY="149.0" onAction="#excluir" prefHeight="33.0" prefWidth="121.0" text="Excluir" />
@@ -38,7 +38,7 @@
             <TableColumn fx:id="colTelefone" prefWidth="87.0" text="Tel." />
         </columns>
       </TableView>
-      <ImageView fitHeight="33.0" fitWidth="700.0" layoutX="50.0" layoutY="467.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="33.0" fitWidth="700.0" layoutX="77.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagens/rodape.png" />
          </image>
