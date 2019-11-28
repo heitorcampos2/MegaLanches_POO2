@@ -22,7 +22,7 @@
       <JFXTextField fx:id="TextFieldID" editable="false" focusColor="RED" labelFloat="true" layoutX="153.0" layoutY="31.0" prefHeight="25.0" prefWidth="95.0" promptText="ID" />
       <JFXButton layoutX="550.0" layoutY="72.0" onAction="#adicionar" prefHeight="33.0" prefWidth="127.0" text="Salvar" />
       <JFXButton layoutX="549.0" layoutY="114.0" onAction="#editar" prefHeight="33.0" prefWidth="127.0" text="Editar" />
-      <TableView fx:id="tabela" layoutX="18.0" layoutY="204.0" prefHeight="246.0" prefWidth="665.0">
+      <TableView fx:id="tabela" layoutX="18.0" layoutY="202.0" prefHeight="254.0" prefWidth="665.0">
         <columns>
           <TableColumn fx:id="colId" prefWidth="51.0" text="ID" />
           <TableColumn fx:id="colProduto" prefWidth="143.0" text="Produto" />
