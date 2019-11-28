@@ -102,6 +102,12 @@ public class FazPedidoController implements Initializable {
     private List<PedidoProduto> Temp = new ArrayList<PedidoProduto>();
     @FXML
     private Spinner<Integer> spinnerQuantidade;
+    @FXML
+    private Tab tabListaDePedidos;
+    @FXML
+    private TableView<?> tabelaPedido;
+    @FXML
+    private TableView<?> tabelaDetalhe;
     /**
      * Initializes the controller class.
      */
@@ -359,6 +365,14 @@ public class FazPedidoController implements Initializable {
             
         }
         
+    }
+
+    @FXML
+    private void btnFinalizarPedido(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnDetalha(ActionEvent event) {
     }
 }
         
