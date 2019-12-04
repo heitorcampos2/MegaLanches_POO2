@@ -197,7 +197,7 @@ public class FazPedidoController implements Initializable {
         colQuantidadeR.setCellValueFactory(new PropertyValueFactory("qtd"));
         
         colIDPedido.setCellValueFactory(new PropertyValueFactory("id_pedido"));
-        colClienteP.setCellValueFactory(new PropertyValueFactory("cliente.getNome()"));
+        colClienteP.setCellValueFactory(new PropertyValueFactory("cliente"));
         colDataPedido.setCellValueFactory(new PropertyValueFactory("data_pedido"));
         
         colProdDetalhe.setCellValueFactory(new PropertyValueFactory("produto"));
