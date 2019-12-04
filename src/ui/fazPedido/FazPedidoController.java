@@ -46,6 +46,7 @@ public class FazPedidoController implements Initializable {
     private PedidoProduto PedidoProdutoSelecionado;
     private Produto ProdutoSelecionado;
     private Cliente clienteSelecionado;
+    private Pedido PedidoSelecionado;
     @FXML
     private TableColumn colId;
     @FXML
@@ -59,6 +60,7 @@ public class FazPedidoController implements Initializable {
     private ObservableList<Cliente> dados = FXCollections.observableArrayList();
     private ObservableList<Produto> dados_p = FXCollections.observableArrayList();
     private ObservableList<PedidoProduto> dadosPedidoProduto = FXCollections.observableArrayList();
+    private ObservableList<Pedido> dadosPedido = FXCollections.observableArrayList();
 
     //SERVIÇOS
     //Atributo para representar o servico
@@ -107,7 +109,7 @@ public class FazPedidoController implements Initializable {
     @FXML
     private JFXTextField TextFieldTotal;
     @FXML
-    private TableView tabelaPedidosR;
+    private TableView <Pedido>tabelaPedidosR;
     @FXML
     private TableColumn colIDPedido;
     @FXML
@@ -133,6 +135,8 @@ public class FazPedidoController implements Initializable {
         //carregar a lista de Clientes na tabela
         listarClientesNaTabela();
         listarProdutosNaTabela();
+        listarPedidosNaTabela();
+       
 
         spinnerQuantidade.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100));
 
@@ -192,6 +196,14 @@ public class FazPedidoController implements Initializable {
         colPrecoR.setCellValueFactory(new PropertyValueFactory("PrecoMultiplicado"));
         colQuantidadeR.setCellValueFactory(new PropertyValueFactory("qtd"));
         
+        colIDPedido.setCellValueFactory(new PropertyValueFactory("id_pedido"));
+        colClienteP.setCellValueFactory(new PropertyValueFactory("cliente.getNome()"));
+        colDataPedido.setCellValueFactory(new PropertyValueFactory("data_pedido"));
+        
+        colProdDetalhe.setCellValueFactory(new PropertyValueFactory("produto"));
+        colValorDetalhe.setCellValueFactory(new PropertyValueFactory("PrecoMultiplicado"));
+        colQuantidadeDetalhe.setCellValueFactory(new PropertyValueFactory("qtd"));
+        
     }//configurarTabelaDisponiveis
 
     private void listarClientesNaTabela() {
@@ -207,6 +219,22 @@ public class FazPedidoController implements Initializable {
         //jogando os dados na tabela
 
         tabela.setItems(dados);
+
+    }
+    
+    private void listarPedidosNaTabela() {
+
+        //limpar quaisquer dados anteriores
+        dadosPedido.clear();
+        //solicitando a camada de servoços a lista de Pedido
+        List<Pedido> Pedido = PedidoServico.listar();
+
+        //transformar a lista de Pedido no formato que a tabela
+        //do javaFX aceita
+        dadosPedido = FXCollections.observableArrayList(Pedido);
+        //jogando os dados na tabela
+
+        tabelaPedidosR.setItems(dadosPedido);
 
     }
 
@@ -242,7 +270,7 @@ public class FazPedidoController implements Initializable {
         dadosPedidoProduto = FXCollections.observableArrayList(PedidoProduto);
         
         //jogando os dados na tabela
-        tabela.setItems(dados);
+        tabelaDetalhe.setItems(dadosPedidoProduto);
 
     }
 
@@ -255,7 +283,7 @@ public class FazPedidoController implements Initializable {
         //pegar nome da pessoa q deseja pesquisar
         String nome = textFieldPesquisarProduto.getText();
 
-        //solicitando a camada de serviços a lista de Clientes
+        //solicitando a camada de serviços a lista de Produto
         List<Produto> Produto = ProdutoServico.listarPeloNomeProduto(nome);
 
         //transformar a lista de Clientes no formato que a tabela
@@ -390,16 +418,28 @@ public class FazPedidoController implements Initializable {
             pp.setPedido(pedido);
             //Mandar o servico salvar
             FazPedidoservico.adicionar(pp);
+            
+            
 
         }
 
     }
 
-    @FXML
-    private void btnFinalizarPedido(ActionEvent event) {
-    }
 
     @FXML
     private void btnDetalha(ActionEvent event) {
+         PedidoSelecionado = tabelaPedidosR.getSelectionModel().getSelectedItem();
+        if (PedidoSelecionado != null) {//existe Pedido selecionado
+           
+           tabelaDetalhe.setItems(dadosPedidoProduto); 
+
+        } else {
+            mensagemErro("Não há pedido selecionado.");
+
+        }
+    }
+
+    @FXML
+    private void encerrarPedido(ActionEvent event) {
     }
 }
