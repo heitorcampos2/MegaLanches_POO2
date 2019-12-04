@@ -26,6 +26,10 @@ public class PedidoProduto {
 
     public PedidoProduto() {
     }
+    
+    public BigDecimal getPrecoMultiplicado(){
+        return preco.multiply(new BigDecimal(qtd));
+    }
 
     public PedidoProduto(Produto produto, BigDecimal preco, Pedido pedido, Integer qtd) {
         this.setProduto(produto);

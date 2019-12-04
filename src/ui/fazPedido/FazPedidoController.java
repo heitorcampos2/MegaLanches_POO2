@@ -8,6 +8,7 @@ import dados.entidades.Pedido;
 import dados.entidades.PedidoProduto;
 import dados.entidades.Produto;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -41,7 +42,8 @@ public class FazPedidoController implements Initializable {
     private JFXTextField textFieldPesquisar;
     @FXML
     private TableView<Cliente> tabela;
-
+    
+    private PedidoProduto PedidoProdutoSelecionado;
     private Produto ProdutoSelecionado;
     private Cliente clienteSelecionado;
     @FXML
@@ -69,7 +71,7 @@ public class FazPedidoController implements Initializable {
     @FXML
     private TableColumn colPreco;
     @FXML
-    private TableView tabelaSelecionados;
+    private TableView <PedidoProduto>tabelaSelecionados;
     @FXML
     private TabPane tabPaneFazPedido;
     @FXML
@@ -93,9 +95,31 @@ public class FazPedidoController implements Initializable {
     @FXML
     private Tab tabListaDePedidos;
     @FXML
-    private TableView<?> tabelaPedido;
+    private TableView <PedidoProduto> tabelaDetalhe;
     @FXML
-    private TableView<?> tabelaDetalhe;
+    private TableView <PedidoProduto> tabelaResumo;
+    @FXML
+    private TableColumn colProdutoR;
+    @FXML
+    private TableColumn colQuantidadeR;
+    @FXML
+    private TableColumn colPrecoR;
+    @FXML
+    private JFXTextField TextFieldTotal;
+    @FXML
+    private TableView tabelaPedidosR;
+    @FXML
+    private TableColumn colIDPedido;
+    @FXML
+    private TableColumn colClienteP;
+    @FXML
+    private TableColumn colDataPedido;
+    @FXML
+    private TableColumn colProdDetalhe;
+    @FXML
+    private TableColumn colQuantidadeDetalhe;
+    @FXML
+    private TableColumn colValorDetalhe;
 
     /**
      * Initializes the controller class.
@@ -159,10 +183,15 @@ public class FazPedidoController implements Initializable {
         colProduto.setCellValueFactory(new PropertyValueFactory("nome_p"));
         colPreco.setCellValueFactory(new PropertyValueFactory("preco_un"));
 
+        
         colProdutoSelecionado.setCellValueFactory(new PropertyValueFactory("produto"));
         colPrecoSelecionado.setCellValueFactory(new PropertyValueFactory("preco"));
         colQtdSelecionado.setCellValueFactory(new PropertyValueFactory("qtd"));
 
+        colProdutoR.setCellValueFactory(new PropertyValueFactory("produto"));
+        colPrecoR.setCellValueFactory(new PropertyValueFactory("PrecoMultiplicado"));
+        colQuantidadeR.setCellValueFactory(new PropertyValueFactory("qtd"));
+        
     }//configurarTabelaDisponiveis
 
     private void listarClientesNaTabela() {
@@ -205,7 +234,7 @@ public class FazPedidoController implements Initializable {
         //limpar quaisquer dados anteriores
         dadosPedidoProduto.clear();
         
-        //solicitando a camada de servoços a lista de Clientes
+        //solicitando a camada de serviços a lista de Clientes
         List<PedidoProduto> PedidoProduto = FazPedidoservico.listar();
 
         //transformar a lista de Clientes no formato que a tabela
@@ -285,6 +314,14 @@ public class FazPedidoController implements Initializable {
 
             SelectionModel<Tab> sm = tabPaneFazPedido.getSelectionModel();
             sm.select(tabResumo);
+            
+            //Somando o total
+            BigDecimal total = new BigDecimal("0");
+            for(PedidoProduto pp : dadosPedidoProduto){
+                total = total.add(pp.getPrecoMultiplicado());
+            }
+            
+            TextFieldTotal.setText(total.toString());
 
         } else {
             mensagemErro("Selecione um Produto.");
@@ -313,6 +350,9 @@ public class FazPedidoController implements Initializable {
 
             //adicionar na tabelaSelecionados
             tabelaSelecionados.setItems(dadosPedidoProduto);
+            
+             //adicionar na tabelaResumo
+            tabelaResumo.setItems(dadosPedidoProduto);
 
         } else {
             mensagemErro("Selecione um Produto.");
@@ -322,6 +362,15 @@ public class FazPedidoController implements Initializable {
 
     @FXML
     private void excluirDoPedido(ActionEvent event) {
+       PedidoProdutoSelecionado = tabelaSelecionados.getSelectionModel().getSelectedItem();
+        if (PedidoProdutoSelecionado != null) {//existe cliente selecionado
+
+            dadosPedidoProduto.remove(PedidoProdutoSelecionado);
+
+        } else {
+            mensagemErro("Primeiramente selecione um Produto, para depois excluí-lo.");
+
+        }
     }
 
     @FXML

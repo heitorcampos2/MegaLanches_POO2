@@ -85,16 +85,16 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <JFXTextField fx:id="TextFieldeClienteResumo" editable="false" labelFloat="true" layoutX="34.0" layoutY="42.0" prefHeight="25.0" prefWidth="397.0" promptText="Cliente" unFocusColor="RED" />
-                        <TableView layoutX="31.0" layoutY="82.0" prefHeight="314.0" prefWidth="602.0">
+                        <TableView fx:id="tabelaResumo" layoutX="31.0" layoutY="82.0" prefHeight="314.0" prefWidth="602.0">
                            <columns>
-                              <TableColumn prefWidth="204.0" text="Produto" />
-                              <TableColumn prefWidth="83.0" text="Qtd" />
-                              <TableColumn prefWidth="92.0" text="Preço" />
+                              <TableColumn fx:id="colProdutoR" prefWidth="359.0" text="Produto" />
+                              <TableColumn fx:id="colQuantidadeR" prefWidth="103.0" text="Qtd" />
+                              <TableColumn fx:id="colPrecoR" prefWidth="139.0" text="Preço" />
                            </columns>
                         </TableView>
                         <JFXButton layoutX="466.0" layoutY="413.0" onAction="#FinalizarPedido" text="Finalizar Pedido" />
                         <Label layoutX="233.0" layoutY="419.0" text="Total : R$" />
-                        <JFXTextField alignment="CENTER" editable="false" layoutX="307.0" layoutY="407.0" prefHeight="42.0" prefWidth="74.0" promptText="00,00" unFocusColor="RED">
+                        <JFXTextField fx:id="TextFieldTotal" alignment="CENTER" editable="false" layoutX="307.0" layoutY="407.0" prefHeight="42.0" prefWidth="74.0" promptText="00,00" unFocusColor="RED">
                            <font>
                               <Font size="19.0" />
                            </font></JFXTextField>
@@ -105,20 +105,20 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tabelaPedido" layoutX="14.0" layoutY="83.0" prefHeight="311.0" prefWidth="377.0">
+                        <TableView fx:id="tabelaPedidosR" layoutX="14.0" layoutY="83.0" prefHeight="311.0" prefWidth="377.0">
                            <columns>
-                              <TableColumn prefWidth="100.0" text="Id Pedido" />
-                              <TableColumn prefWidth="106.0" text="Cliente" />
-                              <TableColumn prefWidth="161.0" text="Data" />
+                              <TableColumn fx:id="colIDPedido" prefWidth="100.0" text="Id Pedido" />
+                              <TableColumn fx:id="colClienteP" prefWidth="106.0" text="Cliente" />
+                              <TableColumn fx:id="colDataPedido" prefWidth="161.0" text="Data" />
                            </columns>
                         </TableView>
                         <JFXButton layoutX="402.0" layoutY="416.0" onAction="#btnFinalizarPedido" text="Finalizar Pedido" />
                         <JFXButton layoutX="278.0" layoutY="416.0" onAction="#btnDetalha" text="Detalhar" />
                         <TableView fx:id="tabelaDetalhe" layoutX="402.0" layoutY="84.0" prefHeight="311.0" prefWidth="278.0">
                            <columns>
-                              <TableColumn prefWidth="129.0" text="Produto" />
-                              <TableColumn prefWidth="58.0" text="Qtd" />
-                              <TableColumn prefWidth="86.0" text="Valor" />
+                              <TableColumn fx:id="colProdDetalhe" prefWidth="129.0" text="Produto" />
+                              <TableColumn fx:id="colQuantidadeDetalhe" prefWidth="58.0" text="Qtd" />
+                              <TableColumn fx:id="colValorDetalhe" prefWidth="86.0" text="Valor" />
                            </columns>
                         </TableView>
                      </children>
