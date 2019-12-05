@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.main.principalController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="600.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.main.principalController">
    <right>
       <VBox alignment="CENTER" prefHeight="375.0" prefWidth="103.0" spacing="10.0" BorderPane.alignment="BOTTOM_LEFT">
          <children>
@@ -58,7 +58,7 @@
    <top>
       <HBox alignment="TOP_CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="150.0" prefWidth="508.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="289.0" fitWidth="354.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="149.0" fitWidth="348.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../imagens/MEGA-Lanches.png" />
                </image>
@@ -66,11 +66,4 @@
          </children>
       </HBox>
    </top>
-   <bottom>
-      <ImageView fitHeight="33.0" fitWidth="700.0" layoutX="55.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-         <image>
-            <Image url="@../imagens/rodape.png" />
-         </image>
-      </ImageView>
-   </bottom>
 </BorderPane>
