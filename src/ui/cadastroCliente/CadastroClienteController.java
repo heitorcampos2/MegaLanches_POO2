@@ -263,10 +263,10 @@ public class CadastroClienteController implements Initializable {
                 //Exibindo mensagem
                 mensagem("Cliente removido com sucesso!");
 
-            } else {
+            }
+        } else {
                 mensagemErro("Selecione um Cliente.");
 
             }
-        }
     }
 }

@@ -2,6 +2,7 @@ package servicos;
 
 import dados.daos.PedidoDAO;
 import dados.entidades.Pedido;
+import dados.entidades.PedidoProduto;
 import java.util.List;
 
 public class PedidoServico {
@@ -20,6 +21,20 @@ public class PedidoServico {
         //qualquer regra de negocio (se aplicavel)
         //pedir a dao para listar e retornar
         return dao.listar();
+
+    }
+    
+    public void excluir(Pedido a) {
+        //qualquer regra de negocio(se aplicavel)
+        //mandar para a DAO excluir
+        dao.excluir(a);
+
+    }
+    
+    public List<PedidoProduto> detalhar(Pedido p) {
+        //qualquer regra de negocio (se aplicavel)
+        //pedir a dao para listar e retornar
+        return dao.detalhar(p);
 
     }
 }

@@ -112,8 +112,7 @@
                               <TableColumn fx:id="colDataPedido" prefWidth="161.0" text="Data" />
                            </columns>
                         </TableView>
-                        <JFXButton layoutX="402.0" layoutY="416.0" onAction="#encerrarPedido" text="Pedido Concluido" />
-                        <JFXButton layoutX="278.0" layoutY="416.0" onAction="#btnDetalha" text="Detalhar" />
+                        <JFXButton layoutX="567.0" layoutY="420.0" onAction="#btnDetalha" text="Detalhar" />
                         <TableView fx:id="tabelaDetalhe" layoutX="402.0" layoutY="84.0" prefHeight="311.0" prefWidth="278.0">
                            <columns>
                               <TableColumn fx:id="colProdDetalhe" prefWidth="129.0" text="Produto" />
@@ -121,6 +120,8 @@
                               <TableColumn fx:id="colValorDetalhe" prefWidth="86.0" text="Valor" />
                            </columns>
                         </TableView>
+                        <Label layoutX="117.0" layoutY="33.0" prefHeight="21.0" prefWidth="172.0" text="Todos os Pedidos" />
+                        <Label layoutX="455.0" layoutY="33.0" prefHeight="21.0" prefWidth="172.0" text="Detalhe do Pedido" />
                      </children>
                   </AnchorPane>
               </content>

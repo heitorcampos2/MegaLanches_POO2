@@ -61,7 +61,7 @@ public class FazPedidoController implements Initializable {
     private ObservableList<Produto> dados_p = FXCollections.observableArrayList();
     private ObservableList<PedidoProduto> dadosPedidoProduto = FXCollections.observableArrayList();
     private ObservableList<Pedido> dadosPedido = FXCollections.observableArrayList();
-
+    private ObservableList<PedidoProduto> dadosPedidoProdutoTemp = FXCollections.observableArrayList();
     //SERVIÇOS
     //Atributo para representar o servico
     private FazPedidoServico FazPedidoservico = new FazPedidoServico();
@@ -404,7 +404,13 @@ public class FazPedidoController implements Initializable {
     @FXML
     private void FinalizarPedido(ActionEvent event) {
 
-        Pedido pedido = new Pedido(LocalDateTime.now(), clienteSelecionado);
+         //pegando resposta de confirmação do usuario
+            Optional<ButtonType> btn
+                    = mensagemDeConfirmacao("FINALIZAR PEDIDO?", "FINALIZAR");
+            //se o botão OK foi pressionado
+            if (btn.get() == ButtonType.OK) {
+                
+                Pedido pedido = new Pedido(LocalDateTime.now(), clienteSelecionado);
 
         pedido = PedidoServico.adicionar(pedido);
 
@@ -422,7 +428,16 @@ public class FazPedidoController implements Initializable {
             
 
         }
+        
+        listarPedidosNaTabela();
+        
+         SelectionModel<Tab> sm = tabPaneFazPedido.getSelectionModel();
+            sm.select(tabListaDePedidos);
 
+                //Exibindo mensagem
+                mensagemSucesso("PEDIDO FINALIZADO COM SUCESSO!");
+
+            } 
     }
 
 
@@ -430,8 +445,21 @@ public class FazPedidoController implements Initializable {
     private void btnDetalha(ActionEvent event) {
          PedidoSelecionado = tabelaPedidosR.getSelectionModel().getSelectedItem();
         if (PedidoSelecionado != null) {//existe Pedido selecionado
-           
-           tabelaDetalhe.setItems(dadosPedidoProduto); 
+           //limpar quaisquer dados anteriores        
+        dadosPedidoProdutoTemp.clear();
+        
+        
+
+        //solicitando a camada de serviços a lista de Clientes
+        List<PedidoProduto> resultado = PedidoServico.detalhar(PedidoSelecionado);
+
+        //transformar a lista de pedidoProduto no formato que a tabela
+        //do javaFX aceita
+        dadosPedidoProdutoTemp = FXCollections.observableArrayList(resultado);
+        
+        //jogando os dados na tabela
+        
+           tabelaDetalhe.setItems(dadosPedidoProdutoTemp); 
 
         } else {
             mensagemErro("Não há pedido selecionado.");
@@ -439,7 +467,30 @@ public class FazPedidoController implements Initializable {
         }
     }
 
-    @FXML
-    private void encerrarPedido(ActionEvent event) {
-    }
+   /* private void encerrarPedido(ActionEvent event) {
+         // pegar o Pedido que foi selecionado na tabela
+        PedidoSelecionado = tabelaPedidosR.getSelectionModel().getSelectedItem();
+
+        if (PedidoSelecionado != null) {//existe Pedido selecionado
+
+            //pegando resposta de confirmação do usuario
+            Optional<ButtonType> btn
+                    = mensagemDeConfirmacao("Deseja mesmo remover o Pedido?", "EXCLUIR");
+            //se o botão OK foi pressionado
+            if (btn.get() == ButtonType.OK) {
+                //mandar para a camada de servico excluir
+                PedidoServico.excluir(PedidoSelecionado);
+
+                //chama o metodo para atualizar a tabela
+                listarPedidosNaTabela();
+
+                //Exibindo mensagem
+                mensagemSucesso("Pedido removido com sucesso!");
+
+            }
+        } else {
+                mensagemErro("Selecione um Pedido.");
+
+            }
+    }*/
 }
