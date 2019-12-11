@@ -140,7 +140,8 @@ public class FazPedidoController implements Initializable {
 
         spinnerQuantidade.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100));
 
-        tabelaSelecionados.setItems(dadosPedidoProduto);
+        tabelaSelecionados.setItems(dadosPedidoProduto); 
+        
     }
     //#########mensagens#####
 
@@ -395,9 +396,11 @@ public class FazPedidoController implements Initializable {
 
             dadosPedidoProduto.remove(PedidoProdutoSelecionado);
 
+            
         } else {
             mensagemErro("Primeiramente selecione um Produto, para depois excluí-lo.");
-
+            
+            
         }
     }
 

@@ -17,6 +17,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import servicos.ClienteServico;
+import java.text.ParseException;
+import excecoes.ValorInvalidoException;
 
 public class CadastroClienteController implements Initializable {
 

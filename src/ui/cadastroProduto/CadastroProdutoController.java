@@ -205,11 +205,12 @@ public class CadastroProdutoController implements Initializable {
 
     @FXML
     private void excluir(ActionEvent event) {
-
+       
         // pegar o Produto que foi selecionado na tabela
         selecionado = tabela.getSelectionModel().getSelectedItem();
 
         if (selecionado != null) {//existe produto selecionado
+            //verificar se produto está em uso, exibir mensagem
 
             //pegando resposta de confirmação do usuario
             Optional<ButtonType> btn
