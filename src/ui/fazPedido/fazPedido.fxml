@@ -36,7 +36,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab fx:id="TabProduto" text="Produto">
+          <Tab fx:id="TabProduto" disable="true" text="Produto">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="377.0" prefWidth="664.0">
                      <children>
@@ -80,7 +80,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab fx:id="tabResumo" text="Resumo do Pedido">
+            <Tab fx:id="tabResumo" disable="true" text="Resumo do Pedido">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>

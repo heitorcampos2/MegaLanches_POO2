@@ -325,6 +325,10 @@ public class FazPedidoController implements Initializable {
 
             SelectionModel<Tab> sm = tabPaneFazPedido.getSelectionModel();
             sm.select(TabProduto);
+            
+            //Habilita o Tab de Ator
+            ativarTab(TabProduto, true);//
+                        
 
         } else {
             mensagemErro("Selecione um Cliente.");
@@ -351,6 +355,9 @@ public class FazPedidoController implements Initializable {
             }
             
             TextFieldTotal.setText(total.toString());
+            
+            //Habilita o Tab de Ator
+            ativarTab(tabResumo, true);//
 
         } else {
             mensagemErro("Selecione um Produto.");
@@ -469,6 +476,17 @@ public class FazPedidoController implements Initializable {
 
         }
     }
+    /**
+     * Método para ativar ou desativar uma tab
+     */
+    private void ativarTab(Tab tab, boolean ativar){
+        tab.setDisable(!ativar);
+    }
+
+    /**
+     * Esse método é chamado toda vez que um tab é seleciconado
+     * Aqui ele vai limpar os dados das tabelas
+     */
 
    /* private void encerrarPedido(ActionEvent event) {
          // pegar o Pedido que foi selecionado na tabela

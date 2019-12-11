@@ -23,4 +23,10 @@ public class FazPedidoServico {
         return dao.listar();
 
     }
+     public void excluir(PedidoProduto a) {
+        //qualquer regra de negocio(se aplicavel)
+        //mandar para a DAO excluir
+        dao.excluir(a);
+
+    }
 }

@@ -36,5 +36,22 @@ public class FazPedidoDAO {
         return consulta.getResultList();
 
     }
+    
+     public void excluir(PedidoProduto a) {
+        //Pegando o gerenciador de acesso ao BD
+        EntityManager gerenciador = JPAUtil.getGerenciador();
+
+        //Iniciar a transação
+        gerenciador.getTransaction().begin();
+
+        //mandar sincronizar as alterações
+        a = gerenciador.merge(a);
+
+        //mandar sincronizar as alteracoes
+        gerenciador.remove(a);
+        //Commit
+        gerenciador.getTransaction().commit();
+
+    }
 
 }
